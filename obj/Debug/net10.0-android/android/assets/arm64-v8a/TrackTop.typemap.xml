@@ -1,10 +1,10 @@
-<api type="debug" assembly-name="TrackTop" mvid="980ab47c808c4ab699945d34fea5454b">
+<api type="debug" assembly-name="TrackTop" mvid="af11089b00724dfbbf6c319abdc4755e">
   <java-to-managed>
-    <entry java-name="crc648d28ace47478ce12/MainActivity" managed-name="TrackTop.MainActivity, TrackTop" managed-type-token-id="33554441" />
-    <entry java-name="crc648d28ace47478ce12/MainApplication" managed-name="TrackTop.MainApplication, TrackTop" managed-type-token-id="33554442" />
+    <entry java-name="crc648d28ace47478ce12/MainActivity" managed-name="TrackTop.MainActivity, TrackTop" managed-type-token-id="33554440" />
+    <entry java-name="crc648d28ace47478ce12/MainApplication" managed-name="TrackTop.MainApplication, TrackTop" managed-type-token-id="33554441" />
   </java-to-managed>
   <managed-to-java>
-    <entry java-name="crc648d28ace47478ce12/MainActivity" managed-name="TrackTop.MainActivity, TrackTop" managed-type-token-id="33554441" />
-    <entry java-name="crc648d28ace47478ce12/MainApplication" managed-name="TrackTop.MainApplication, TrackTop" managed-type-token-id="33554442" />
+    <entry java-name="crc648d28ace47478ce12/MainActivity" managed-name="TrackTop.MainActivity, TrackTop" managed-type-token-id="33554440" />
+    <entry java-name="crc648d28ace47478ce12/MainApplication" managed-name="TrackTop.MainApplication, TrackTop" managed-type-token-id="33554441" />
   </managed-to-java>
 </api>

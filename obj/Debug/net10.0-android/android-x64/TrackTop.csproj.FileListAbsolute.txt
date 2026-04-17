@@ -1714,3 +1714,4 @@ C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-android\android-x64\resizetizer\r
 C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xhdpi\folder_image.png
 C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-hdpi\folder_image.png
 C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-mdpi\folder_image.png
+C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-android\android-x64\TrackTop.sourcelink.json

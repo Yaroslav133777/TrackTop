@@ -48,36 +48,6 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[C:/Desktop/TrackTop/TrackTop/FoldersPage.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = TrackTop.FoldersPage.xaml
-build_metadata.AdditionalFiles.TargetPath = FoldersPage.xaml
-build_metadata.AdditionalFiles.RelativePath = FoldersPage.xaml
-build_metadata.AdditionalFiles.Inflator = SourceGen
-build_metadata.AdditionalFiles.NoWarn = 
-build_metadata.AdditionalFiles.EnableDiagnostics = 
-build_metadata.AdditionalFiles.LineInfo = 
-
-[C:/Desktop/TrackTop/TrackTop/MainPage.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = TrackTop.MainPage.xaml
-build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
-build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
-build_metadata.AdditionalFiles.Inflator = SourceGen
-build_metadata.AdditionalFiles.NoWarn = 
-build_metadata.AdditionalFiles.EnableDiagnostics = 
-build_metadata.AdditionalFiles.LineInfo = 
-
-[C:/Desktop/TrackTop/TrackTop/NavTabbedPage.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = TrackTop.NavTabbedPage.xaml
-build_metadata.AdditionalFiles.TargetPath = NavTabbedPage.xaml
-build_metadata.AdditionalFiles.RelativePath = NavTabbedPage.xaml
-build_metadata.AdditionalFiles.Inflator = SourceGen
-build_metadata.AdditionalFiles.NoWarn = 
-build_metadata.AdditionalFiles.EnableDiagnostics = 
-build_metadata.AdditionalFiles.LineInfo = 
-
 [C:/Desktop/TrackTop/TrackTop/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = TrackTop.Resources.Styles.Colors.xaml
@@ -98,11 +68,41 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[C:/Desktop/TrackTop/TrackTop/SettingsPage.xaml]
+[C:/Desktop/TrackTop/TrackTop/Views/FoldersPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = TrackTop.SettingsPage.xaml
-build_metadata.AdditionalFiles.TargetPath = SettingsPage.xaml
-build_metadata.AdditionalFiles.RelativePath = SettingsPage.xaml
+build_metadata.AdditionalFiles.ManifestResourceName = TrackTop.Views.FoldersPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\FoldersPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\FoldersPage.xaml
+build_metadata.AdditionalFiles.Inflator = SourceGen
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[C:/Desktop/TrackTop/TrackTop/Views/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = TrackTop.Views.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\MainPage.xaml
+build_metadata.AdditionalFiles.Inflator = SourceGen
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[C:/Desktop/TrackTop/TrackTop/Views/NavTabbedPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = TrackTop.Views.NavTabbedPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\NavTabbedPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\NavTabbedPage.xaml
+build_metadata.AdditionalFiles.Inflator = SourceGen
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[C:/Desktop/TrackTop/TrackTop/Views/SettingsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = TrackTop.Views.SettingsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\SettingsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\SettingsPage.xaml
 build_metadata.AdditionalFiles.Inflator = SourceGen
 build_metadata.AdditionalFiles.NoWarn = 
 build_metadata.AdditionalFiles.EnableDiagnostics = 

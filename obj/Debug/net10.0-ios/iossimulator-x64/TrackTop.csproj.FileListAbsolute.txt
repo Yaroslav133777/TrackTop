@@ -377,3 +377,4 @@ C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-ios\iossimulator-x64\resizetizer\
 C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-ios\iossimulator-x64\resizetizer\r\settings_image@3x.png
 C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-ios\iossimulator-x64\resizetizer\r\settings_image@2x.png
 C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-ios\iossimulator-x64\resizetizer\r\settings_image.png
+C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-ios\iossimulator-x64\TrackTop.sourcelink.json

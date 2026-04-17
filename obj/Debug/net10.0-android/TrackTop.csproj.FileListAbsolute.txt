@@ -2795,3 +2795,14 @@ C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-android\resizetizer\r\drawable-xx
 C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-android\resizetizer\r\drawable-xhdpi\settings_image.png
 C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-android\resizetizer\r\drawable-hdpi\settings_image.png
 C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-android\resizetizer\r\drawable-mdpi\settings_image.png
+C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-android\TrackTop.sourcelink.json
+C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-android\android\typemaps.arm64-v8a.ll
+C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-android\android\environment.arm64-v8a.ll
+C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-android\android\marshal_methods.arm64-v8a.ll
+C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-android\android\compressed_assemblies.arm64-v8a.ll
+C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-android\android\typemaps.arm64-v8a.o
+C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-android\android\environment.arm64-v8a.o
+C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-android\android\compressed_assemblies.arm64-v8a.o
+C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-android\android\marshal_methods.arm64-v8a.o
+C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-android\android\jni_remap.arm64-v8a.o
+C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-android\app_shared_libraries\arm64-v8a\libxamarin-app.so
