@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TrackTop.MainPage"
+             BackgroundColor="{AppThemeBinding Light=White, Dark = DimGrey}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width = "Auto"/>
+            <ColumnDefinition Width = "*"/>
+            <ColumnDefinition Width = "Auto"/>
+        </Grid.ColumnDefinitions>
+        <VerticalStackLayout Grid.Column="0" Padding="10">
+            <Label
+                x:Name="MorningText"
+                Text="Добро пожаловать!"
+                FontSize="25"
+                TextColor="{AppThemeBinding Light=Black, Dark = White}"/>
+            <Label
+                x:Name = "UsernameText"
+                Text="Username"
+                FontSize="20"
+                TextColor="{AppThemeBinding Light=Black, Dark = White}"/>
+        </VerticalStackLayout>
+        <HorizontalStackLayout Grid.Column="2" Spacing="10" HorizontalOptions="End" VerticalOptions="Center" Padding="10">
+            <ImageButton
+                x:Name="DarkModeButton"
+                Source="dark_mode.png"
+                HeightRequest="40"
+                WidthRequest="40"
+                CornerRadius="20"
+                BackgroundColor="DarkOrchid"
+                Clicked="ThemeSwitcher"/>
+            <ImageButton
+                x:Name="AvatarButton"
+                Source="account_image.png"
+                HeightRequest="40"
+                WidthRequest="40"
+                CornerRadius="20"
+                BackgroundColor="DarkGrey"
+                Clicked="OnAvatarClicked"/>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>
