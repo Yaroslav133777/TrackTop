@@ -6,13 +6,15 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width = "Auto"/>
             <ColumnDefinition Width = "*"/>
             <ColumnDefinition Width = "Auto"/>
         </Grid.ColumnDefinitions>
-        <VerticalStackLayout Grid.Column="0" Padding="10">
+        <VerticalStackLayout Grid.Row="0" Grid.Column="0" Padding="10">
             <Label
                 x:Name="MorningText"
                 Text="Добро пожаловать!"
@@ -24,7 +26,7 @@
                 FontSize="20"
                 TextColor="{AppThemeBinding Light=Black, Dark = White}"/>
         </VerticalStackLayout>
-        <HorizontalStackLayout Grid.Column="2" Spacing="10" HorizontalOptions="End" VerticalOptions="Center" Padding="10">
+        <HorizontalStackLayout Grid.Column="2" Grid.Row="0"  Spacing="10" HorizontalOptions="End" VerticalOptions="Center" Padding="10">
             <ImageButton
                 x:Name="DarkModeButton"
                 Source="dark_mode.png"
@@ -42,5 +44,44 @@
                 BackgroundColor="DarkGrey"
                 Clicked="OnAvatarClicked"/>
         </HorizontalStackLayout>
+        <HorizontalStackLayout Grid.Column="0" Grid.ColumnSpan="3" Grid.Row ="1" Spacing="5" HorizontalOptions="Start" Padding="5">
+            <Button Text="На сегодня"
+                    FontSize="12"
+                    ImageSource="calendar_image.png"
+                    ContentLayout="Left, 5"
+                    TextColor="{AppThemeBinding Light=Black, Dark = White}"
+                    BackgroundColor="{AppThemeBinding Light=MediumPurple, Dark = MediumPurple}"
+                    HeightRequest="40"
+                    WidthRequest="120"
+                    CornerRadius="25"/>
+            <Button Text="Запланированные"
+                    FontSize="12"
+                    ImageSource="schedule_image.png"
+                    ContentLayout="Left, 5"
+                    TextColor="{AppThemeBinding Light=Black, Dark = White}"
+                    BackgroundColor="{AppThemeBinding Light=MediumPurple, Dark = MediumPurple}"
+                    HeightRequest="40"
+                    WidthRequest="160"
+                    CornerRadius="25"/>
+            <Button Text="Заметки"
+                    FontSize="12"
+                    ImageSource="notes_image.png"
+                    ContentLayout="Left, 5"
+                    TextColor="{AppThemeBinding Light=Black, Dark = White}"
+                    BackgroundColor="{AppThemeBinding Light=MediumPurple, Dark = MediumPurple}"
+                    HeightRequest="40"
+                    WidthRequest="110"
+                    CornerRadius="25"/>
+        </HorizontalStackLayout>
+        <VerticalStackLayout Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="End" Padding="50" Spacing="12">
+            <Button BackgroundColor="{AppThemeBinding Light=#FF512BD4, Dark=#FFAC99EA}"
+                    ImageSource="mic_image"
+                    CornerRadius="35"
+                    HeightRequest="65"
+                    WidthRequest="65"/>
+            <Label Text="Удерживайте для записи"
+                   FontSize="10"
+                   TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+        </VerticalStackLayout>
     </Grid>
 </ContentPage>

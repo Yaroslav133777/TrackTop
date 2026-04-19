@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TrackTop")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+9a297df4c49daa5a705b6d891aeb0fe7d986e8e4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+7437c0a9cf5322dc332b8cbf79493d6f8ba74f9d")]
 [assembly: System.Reflection.AssemblyProductAttribute("TrackTop")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TrackTop")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

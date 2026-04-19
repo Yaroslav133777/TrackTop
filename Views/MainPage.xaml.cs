@@ -30,4 +30,5 @@ public partial class MainPage : ContentPage
             App.Current.UserAppTheme = AppTheme.Dark;
         }
     }
+    
 }
