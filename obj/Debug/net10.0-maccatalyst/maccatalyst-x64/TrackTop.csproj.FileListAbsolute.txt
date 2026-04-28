@@ -376,3 +376,9 @@ C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\resiz
 C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\resizetizer\r\calendar_image@3x.png
 C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\resizetizer\r\calendar_image@2x.png
 C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\resizetizer\r\calendar_image.png
+C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\resizetizer\r\plus_image@3x.png
+C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\resizetizer\r\plus_image@2x.png
+C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\resizetizer\r\plus_image.png
+C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\resizetizer\r\mic_image@3x.png
+C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\resizetizer\r\mic_image@2x.png
+C:\Desktop\TrackTop\TrackTop\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\resizetizer\r\mic_image.png

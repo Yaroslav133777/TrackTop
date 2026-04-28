@@ -3,16 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrackTop.MainPage"
              BackgroundColor="{AppThemeBinding Light=White, Dark = DimGrey}">
-    <Grid>
+    <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="700"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width = "Auto"/>
-            <ColumnDefinition Width = "*"/>
-            <ColumnDefinition Width = "Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <VerticalStackLayout Grid.Row="0" Grid.Column="0" Padding="10">
             <Label
@@ -21,7 +21,7 @@
                 FontSize="25"
                 TextColor="{AppThemeBinding Light=Black, Dark = White}"/>
             <Label
-                x:Name = "UsernameText"
+                x:Name="UsernameText"
                 Text="Username"
                 FontSize="20"
                 TextColor="{AppThemeBinding Light=Black, Dark = White}"/>
@@ -73,15 +73,26 @@
                     WidthRequest="110"
                     CornerRadius="25"/>
         </HorizontalStackLayout>
-        <VerticalStackLayout Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="End" Padding="50" Spacing="12">
-            <Button BackgroundColor="{AppThemeBinding Light=#FF512BD4, Dark=#FFAC99EA}"
-                    ImageSource="mic_image"
-                    CornerRadius="35"
+        <Label Grid.Row="1" Grid.Column="2" x:Name="Test" Text="KrukDushi"/>
+        <HorizontalStackLayout Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="End" Padding="50" Spacing="12">
+            <Button BackgroundColor="{AppThemeBinding Light=White, Dark=Gray}"
+                    ImageSource="plus_image.png"
+                    HeightRequest="40"
+                    WidthRequest="40"
+                    CornerRadius="20">
+            </Button>
+            <Button x:Name="MicButton"
+                    BackgroundColor="{AppThemeBinding Light=#FF512BD4, Dark=#FFAC99EA}"
+                    ImageSource="mic_image.png"
+                    CornerRadius="32,5"
                     HeightRequest="65"
-                    WidthRequest="65"/>
-            <Label Text="Удерживайте для записи"
-                   FontSize="10"
-                   TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
-        </VerticalStackLayout>
+                    WidthRequest="65">
+                <Button.GestureRecognizers>
+                    <PointerGestureRecognizer 
+                        PointerPressed="Listen"
+                        PointerReleased="StopListening"/>
+                </Button.GestureRecognizers>
+            </Button>
+        </HorizontalStackLayout>
     </Grid>
 </ContentPage>

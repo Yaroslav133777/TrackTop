@@ -3,6 +3,7 @@ build_property.MauiXamlNoWarn =
 build_property.EnableMauiXamlDiagnostics = true
 build_property.MauiXamlLineInfo = 
 build_property.Configuration = Debug
+build_property.EnablePreviewFeatures = 
 build_property.TargetFramework = net10.0-windows10.0.19041.0
 build_property.TargetFrameworkIdentifier = .NETCoreApp
 build_property.TargetFrameworkVersion = v10.0

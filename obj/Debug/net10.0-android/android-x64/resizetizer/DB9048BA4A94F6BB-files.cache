@@ -5,6 +5,7 @@ obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-hdpi\folder_image.p
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-hdpi\home_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-hdpi\mic_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-hdpi\notes_image.png
+obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-hdpi\plus_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-hdpi\schedule_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-hdpi\settings_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-mdpi\account_image.png
@@ -14,6 +15,7 @@ obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-mdpi\folder_image.p
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-mdpi\home_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-mdpi\mic_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-mdpi\notes_image.png
+obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-mdpi\plus_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-mdpi\schedule_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-mdpi\settings_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xhdpi\account_image.png
@@ -23,6 +25,7 @@ obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xhdpi\folder_image.
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xhdpi\home_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xhdpi\mic_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xhdpi\notes_image.png
+obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xhdpi\plus_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xhdpi\schedule_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xhdpi\settings_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xxhdpi\account_image.png
@@ -32,6 +35,7 @@ obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xxhdpi\folder_image
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xxhdpi\home_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xxhdpi\mic_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xxhdpi\notes_image.png
+obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xxhdpi\plus_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xxhdpi\schedule_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xxhdpi\settings_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xxxhdpi\account_image.png
@@ -41,6 +45,7 @@ obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xxxhdpi\folder_imag
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xxxhdpi\home_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xxxhdpi\mic_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xxxhdpi\notes_image.png
+obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xxxhdpi\plus_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xxxhdpi\schedule_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\drawable-xxxhdpi\settings_image.png
 obj\Debug\net10.0-android\android-x64\resizetizer\r\mipmap-anydpi-v26\appicon.xml

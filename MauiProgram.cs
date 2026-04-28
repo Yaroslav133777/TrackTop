@@ -1,7 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
-using MauiIcons.Fluent;
-using MauiIcons.Fluent.Filled;
-using MauiIcons.Material;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
+using CommunityToolkit.Maui.Media;
 namespace TrackTop;
 
 public static class MauiProgram
@@ -10,10 +9,8 @@ public static class MauiProgram
     {
         var builder = MauiApp.CreateBuilder();
         builder
+            .UseMauiCommunityToolkit()
             .UseMauiApp<App>()
-            .UseFluentMauiIcons()
-            .UseFluentFilledMauiIcons()
-            .UseMaterialMauiIcons()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("Inter_28pt-Regular.ttf", "Inter");
@@ -21,7 +18,8 @@ public static class MauiProgram
                 fonts.AddFont("Inter_28pt-SemiBold.ttf", "InterSemiBold");
                 fonts.AddFont("Inter_28pt-Bold.ttf", "InterBold");
             })
-            .Services.AddSingleton<NavTabbedPage>();
+            .Services.AddSingleton<NavTabbedPage>()
+            .AddSingleton<ISpeechToText>(SpeechToText.Default);
 
 #if DEBUG
         builder.Logging.AddDebug();

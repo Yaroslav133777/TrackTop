@@ -9,7 +9,10 @@
   <Identity Name="maui-package-name-placeholder" Publisher="CN=User Name" Version="0.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="4315FE84-F26A-44E7-B732-B0639CE85EE1" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
-
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <DeviceCapability Name="microphone" />
+  </Capabilities>
   <Properties>
     <DisplayName>$placeholder$</DisplayName>
     <PublisherDisplayName>User Name</PublisherDisplayName>
