@@ -51,13 +51,11 @@ public partial class MainPage : ContentPage
     void OnRecognitionTextUpdated(object? sender, SpeechToTextRecognitionResultUpdatedEventArgs args)
     {
         RecognitionText += args.RecognitionResult;
-        Test.Text = RecognitionText;
     }
 
     void OnRecognitionTextCompleted(object? sender, SpeechToTextRecognitionResultCompletedEventArgs args)
     {
         RecognitionText = args.RecognitionResult.Text;
-        Test.Text = RecognitionText;
     }
     private void OnAvatarClicked(object? sender, EventArgs e)
     {

@@ -73,7 +73,6 @@
                     WidthRequest="110"
                     CornerRadius="25"/>
         </HorizontalStackLayout>
-        <Label Grid.Row="1" Grid.Column="2" x:Name="Test" Text="KrukDushi"/>
         <HorizontalStackLayout Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="End" Padding="50" Spacing="12">
             <Button BackgroundColor="{AppThemeBinding Light=White, Dark=Gray}"
                     ImageSource="plus_image.png"
