@@ -2,5 +2,17 @@
 
 public class Folder
 {
-    public string Name { get; set; } = "";
+    public string FolderName { get; set; } = string.Empty;
+    public List<Task> Tasks { get; set; } = new List<Task>();
+    public Color FolderColor { get; set; }
+
+    public Folder(int red, int green, int blue)
+    {
+        FolderColor = new Color(red, green, blue);
+    }
+
+    public void AddTask(Task task)
+    {
+        Tasks.Add(task);
+    }
 }

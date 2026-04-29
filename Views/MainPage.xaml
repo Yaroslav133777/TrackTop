@@ -78,7 +78,8 @@
                     ImageSource="plus_image.png"
                     HeightRequest="40"
                     WidthRequest="40"
-                    CornerRadius="20">
+                    CornerRadius="20"
+                    Clicked="OnOpenPopupClicked">
             </Button>
             <Button x:Name="MicButton"
                     BackgroundColor="{AppThemeBinding Light=#FF512BD4, Dark=#FFAC99EA}"

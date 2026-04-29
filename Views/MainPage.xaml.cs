@@ -1,6 +1,10 @@
 ﻿using System.Globalization;
+using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Media;
+using TrackTop.Views;
+using CommunityToolkit.Maui.Extensions;
+
 namespace TrackTop;
 public partial class MainPage : ContentPage
 {
@@ -50,12 +54,12 @@ public partial class MainPage : ContentPage
     }
     void OnRecognitionTextUpdated(object? sender, SpeechToTextRecognitionResultUpdatedEventArgs args)
     {
-        RecognitionText += args.RecognitionResult;
+        RecognitionText = args.RecognitionResult;
     }
 
     void OnRecognitionTextCompleted(object? sender, SpeechToTextRecognitionResultCompletedEventArgs args)
     {
-        RecognitionText = args.RecognitionResult.Text;
+        RecognitionText = RecognitionText;
     }
     private void OnAvatarClicked(object? sender, EventArgs e)
     {
@@ -74,5 +78,13 @@ public partial class MainPage : ContentPage
         {
             App.Current.UserAppTheme = AppTheme.Dark;
         }
+    }
+    private async void OnOpenPopupClicked(object sender, EventArgs e)
+    {
+        await this.ShowPopupAsync(new TaskCreator(),  new PopupOptions
+        {
+            CanBeDismissedByTappingOutsideOfPopup = true,
+            PageOverlayColor = Color.FromRgba(0, 0, 0, 120)
+        });
     }
 }
