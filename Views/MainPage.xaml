@@ -51,42 +51,40 @@
               ColumnDefinitions="*,*,*">
             <Button Grid.Column="0"
                     Text="На сегодня"
-                    FontSize="10"
+                    FontSize="8"
                     ImageSource="calendar_image.png"
-                    ContentLayout="Left, 10"
+                    ContentLayout="Left, 2"
                     TextColor="{AppThemeBinding Light=Black, Dark=White}"
                     BackgroundColor="MediumPurple"
                     HeightRequest="40"
                     CornerRadius="25"
                     LineBreakMode="NoWrap"
-                    Padding="8,0"
-                    HorizontalOptions="Fill" />
-
+                    Padding="2,0"
+                    HorizontalOptions="Fill"/>
             <Button Grid.Column="1"
                     Text="Запланированные"
-                    FontSize="10"
+                    FontSize="8"
                     ImageSource="schedule_image.png"
-                    ContentLayout="Left, 5"
+                    ContentLayout="Left, 2"
                     TextColor="{AppThemeBinding Light=Black, Dark=White}"
                     BackgroundColor="MediumPurple"
                     HeightRequest="40"
                     CornerRadius="25"
                     LineBreakMode="NoWrap"
-                    Padding="8,0"
-                    HorizontalOptions="Fill" />
-
+                    Padding="2,0"
+                    HorizontalOptions="Fill"/>
             <Button Grid.Column="2"
                     Text="Заметки"
-                    FontSize="10"
+                    FontSize="8"
                     ImageSource="notes_image.png"
-                    ContentLayout="Left, 5"
+                    ContentLayout="Left, 2"
                     TextColor="{AppThemeBinding Light=Black, Dark=White}"
                     BackgroundColor="MediumPurple"
                     HeightRequest="40"
                     CornerRadius="25"
                     LineBreakMode="NoWrap"
-                    Padding="8,0"
-                    HorizontalOptions="Fill" />
+                    Padding="2,0"
+                    HorizontalOptions="Fill"/>
         </Grid>
         <HorizontalStackLayout Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="End" Padding="50" Spacing="12">
             <Button BackgroundColor="{AppThemeBinding Light=White, Dark=Gray}"
