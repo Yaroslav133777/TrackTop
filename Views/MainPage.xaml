@@ -7,7 +7,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="700"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -44,35 +44,50 @@
                 BackgroundColor="DarkGrey"
                 Clicked="OnAvatarClicked"/>
         </HorizontalStackLayout>
-        <HorizontalStackLayout Grid.Column="0" Grid.ColumnSpan="3" Grid.Row ="1" Spacing="5" HorizontalOptions="Start" Padding="5">
-            <Button Text="На сегодня"
-                    FontSize="12"
+        <Grid Grid.Row="1" Grid.Column="0"
+              Grid.ColumnSpan="3"
+              Padding="5"
+              ColumnSpacing="5"
+              ColumnDefinitions="*,*,*">
+            <Button Grid.Column="0"
+                    Text="На сегодня"
+                    FontSize="10"
                     ImageSource="calendar_image.png"
-                    ContentLayout="Left, 5"
-                    TextColor="{AppThemeBinding Light=Black, Dark = White}"
-                    BackgroundColor="{AppThemeBinding Light=MediumPurple, Dark = MediumPurple}"
+                    ContentLayout="Left, 10"
+                    TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                    BackgroundColor="MediumPurple"
                     HeightRequest="40"
-                    WidthRequest="120"
-                    CornerRadius="25"/>
-            <Button Text="Запланированные"
-                    FontSize="12"
+                    CornerRadius="25"
+                    LineBreakMode="NoWrap"
+                    Padding="8,0"
+                    HorizontalOptions="Fill" />
+
+            <Button Grid.Column="1"
+                    Text="Запланированные"
+                    FontSize="10"
                     ImageSource="schedule_image.png"
                     ContentLayout="Left, 5"
-                    TextColor="{AppThemeBinding Light=Black, Dark = White}"
-                    BackgroundColor="{AppThemeBinding Light=MediumPurple, Dark = MediumPurple}"
+                    TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                    BackgroundColor="MediumPurple"
                     HeightRequest="40"
-                    WidthRequest="160"
-                    CornerRadius="25"/>
-            <Button Text="Заметки"
-                    FontSize="12"
+                    CornerRadius="25"
+                    LineBreakMode="NoWrap"
+                    Padding="8,0"
+                    HorizontalOptions="Fill" />
+
+            <Button Grid.Column="2"
+                    Text="Заметки"
+                    FontSize="10"
                     ImageSource="notes_image.png"
                     ContentLayout="Left, 5"
-                    TextColor="{AppThemeBinding Light=Black, Dark = White}"
-                    BackgroundColor="{AppThemeBinding Light=MediumPurple, Dark = MediumPurple}"
+                    TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                    BackgroundColor="MediumPurple"
                     HeightRequest="40"
-                    WidthRequest="110"
-                    CornerRadius="25"/>
-        </HorizontalStackLayout>
+                    CornerRadius="25"
+                    LineBreakMode="NoWrap"
+                    Padding="8,0"
+                    HorizontalOptions="Fill" />
+        </Grid>
         <HorizontalStackLayout Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="End" Padding="50" Spacing="12">
             <Button BackgroundColor="{AppThemeBinding Light=White, Dark=Gray}"
                     ImageSource="plus_image.png"
