@@ -19,7 +19,8 @@
                     Text="Новая задача"
                     FontSize="24"
                     FontAttributes="Bold"
-                    VerticalOptions="Center" />
+                    VerticalOptions="Center"
+                    TextColor="Black"/>
 
                 <ImageButton
                     Grid.Column="1"
@@ -62,14 +63,16 @@
                         <VerticalStackLayout Spacing="6">
                             <Label Text="Дата"
                                    FontSize="14"
-                                   FontAttributes="Bold" />
+                                   FontAttributes="Bold"
+                                   TextColor="Black"/>
                             <Border Stroke="#D9D9D9"
                                     StrokeShape="RoundRectangle 12"
                                     Padding="12,6">
                                 <Grid ColumnDefinitions="*,Auto">
                                     <DatePicker x:Name="TaskDatePicker"
                                                 Format="dd.MM.yyyy"
-                                                BackgroundColor="Transparent" />
+                                                BackgroundColor="Transparent"
+                                                TextColor="Black"/>
                                     <ImageButton Grid.Column="1"
                                                  Source="calendar.png"
                                                  BackgroundColor="Transparent"
@@ -89,7 +92,8 @@
                                 <Grid ColumnDefinitions="*,Auto">
                                     <TimePicker x:Name="TaskTimePicker"
                                                 Format="HH:mm"
-                                                BackgroundColor="Transparent" />
+                                                BackgroundColor="Transparent"
+                                                TextColor="Black"/>
                                     <ImageButton Grid.Column="1"
                                                  Source="clock.png"
                                                  BackgroundColor="Transparent"
@@ -104,11 +108,12 @@
                         <Label
                             Text="Папка"
                             FontSize="14"
-                            FontAttributes="Bold" />
+                            FontAttributes="Bold"
+                            TextColor="Black"/>
                         <Border Stroke="#D9D9D9"
                                 StrokeShape="RoundRectangle 12"
                                 Padding="10,2">
-                            <Picker Title="Без папки">
+                            <Picker Title="Без папки" TextColor="Black">
                                 <Picker.Items>
                                     <x:String>Без папки</x:String>
                                     <x:String>Учёба</x:String>
@@ -121,13 +126,15 @@
 
                     <Grid ColumnDefinitions="*,Auto" Padding="0,6">
                         <Label Text="Регулярная задача"
-                               VerticalOptions="Center" />
+                               VerticalOptions="Center" 
+                               TextColor="Black"/>
                         <Switch Grid.Column="1" />
                     </Grid>
 
                     <Grid ColumnDefinitions="*,Auto" Padding="0,0,0,6">
                         <Label Text="Без уведомления"
-                               VerticalOptions="Center" />
+                               VerticalOptions="Center" 
+                               TextColor="Black"/>
                         <Switch Grid.Column="1" />
                     </Grid>
                 </VerticalStackLayout>
@@ -152,9 +159,10 @@
                     Grid.Column="1"
                     Text="Создать"
                     BackgroundColor="#A89AF7"
-                    TextColor="White"
+                    TextColor="Black"
                     CornerRadius="12"
-                    HeightRequest="50"/>
+                    HeightRequest="50"
+                    />
             </Grid>
         </Grid>
     </Border>
