@@ -2,6 +2,119 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TrackTop.FoldersPage">
-    
+             x:Class="TrackTop.FoldersPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             BackgroundColor="{AppThemeBinding Light=White, Dark = DimGrey}">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="20,18,20,24"
+            Spacing="18">
+
+            <!-- Верхняя панель -->
+            <Grid
+                ColumnDefinitions="*,Auto"
+                VerticalOptions="Center">
+                
+                <Label
+                    Text="Папки"
+                    FontSize="28"
+                    FontAttributes="Bold"
+                    TextColor="#111111"
+                    VerticalOptions="Center" />
+
+                <Button
+                    Grid.Column="1"
+                    ImageSource="plus_image.png"
+                    BackgroundColor="Transparent"
+                    Padding="8"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    CornerRadius="20" 
+                    Clicked="OnOpenPopupClicked">
+                    <Button.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="Black" />
+                    </Button.Behaviors>
+                </Button>
+            </Grid>
+
+            <!-- Заголовок секции -->
+            <Label
+                Text="МОИ ПАПКИ"
+                FontSize="13"
+                FontAttributes="Bold"
+                TextColor="#8F8F95"
+                Margin="2,0,0,0" />
+
+            <!-- Сетка папок -->
+            <FlexLayout
+                Wrap="Wrap"
+                Direction="Row"
+                JustifyContent="Start"
+                AlignItems="Start"
+                BindableLayout.ItemsSource="{Binding Folders}">
+
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            WidthRequest="150"
+                            HeightRequest="105"
+                            Margin="0,0,14,14"
+                            Padding="14"
+                            CornerRadius="14"
+                            HasShadow="False"
+                            BorderColor="#E7E7EA"
+                            BackgroundColor="White">
+
+                            <Grid RowDefinitions="Auto,*,Auto"
+                                  ColumnDefinitions="*,Auto">
+
+                                <!-- Иконка -->
+                                <Frame
+                                    WidthRequest="36"
+                                    HeightRequest="36"
+                                    Padding="0"
+                                    CornerRadius="10"
+                                    HasShadow="False"
+                                    BackgroundColor="{Binding IconBackground}"
+                                    BorderColor="Transparent"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Start">
+
+                                    <Label
+                                        Text="&#xE8B7;"
+                                        FontFamily="MaterialIcons"
+                                        FontSize="20"
+                                        TextColor="{Binding IconColor}"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center" />
+                                </Frame>
+
+                                <!-- Счётчик -->
+                                <Label
+                                    Grid.Column="1"
+                                    Text="{Binding Count}"
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    TextColor="#202124"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Start" />
+
+                                <!-- Название -->
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.ColumnSpan="2"
+                                    Text="{Binding Title}"
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    TextColor="#202124"
+                                    LineBreakMode="TailTruncation" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

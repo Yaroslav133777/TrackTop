@@ -4,14 +4,13 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Media;
 using TrackTop.Views;
 using CommunityToolkit.Maui.Extensions;
-
 namespace TrackTop;
 public partial class MainPage : ContentPage
 {
-    private string RecognitionText {get; set;} = string.Empty;
     private readonly ISpeechToText speechToText;
     private CancellationTokenSource? cancellationTokenSource;
-    private string RecognizedText { get; set; } = string.Empty;
+    private bool manuallyStopped = false;
+    private string RecognizedText { get; set; }
 
     public MainPage()
     {
@@ -22,44 +21,68 @@ public partial class MainPage : ContentPage
             MorningText.Text = "Доброе утро!"; //Текст под именем юзера
         }
         bool isWindows = OperatingSystem.IsWindows();
-        if (isWindows)
-        {
-            MainGrid.RowDefinitions[2].Height = 850;
-        }
-        else
-        {
-            MainGrid.RowDefinitions[2].Height = GridLength.Star;
-        }
     }
-    private async void Listen(object sender, PointerEventArgs args)
+    private async void Listen(object? sender, EventArgs args)
     {
+        RecognizedText = string.Empty;
+        manuallyStopped = false;
+        speechToText.StateChanged -= OnSpeechStateChanged;
+        speechToText.RecognitionResultCompleted -= OnRecognitionTextCompleted;
+        speechToText.RecognitionResultUpdated -= OnRecognitionTextUpdated;
         cancellationTokenSource?.Cancel();
         cancellationTokenSource = new CancellationTokenSource();
-        speechToText.RecognitionResultUpdated += OnRecognitionTextUpdated;
+        speechToText.StateChanged += OnSpeechStateChanged;
         speechToText.RecognitionResultCompleted += OnRecognitionTextCompleted;
-        var isGranted = await speechToText.RequestPermissions(cancellationTokenSource.Token);
-        if (!isGranted)
+        speechToText.RecognitionResultUpdated += OnRecognitionTextUpdated;
+        try
         {
-            await Toast.Make("Permission not granted").Show(CancellationToken.None);
-            return;
+            var isGranted = await speechToText.RequestPermissions(cancellationTokenSource.Token);
+            if (!isGranted)
+            {
+                await Toast.Make("Permission not granted").Show(CancellationToken.None);
+                return;
+            }
+            await speechToText.StartListenAsync(new SpeechToTextOptions { Culture = CultureInfo.CurrentCulture, ShouldReportPartialResults = false}, cancellationTokenSource.Token);
+            MicButton.BackgroundColor = Colors.Red;
+            MicButton.Source = "stop_image.png";
+            MicButton.Clicked -= Listen;
+            MicButton.Clicked += StopListening;
         }
-        
-        await speechToText.StartListenAsync(new SpeechToTextOptions { Culture = CultureInfo.CurrentCulture, ShouldReportPartialResults = true }, cancellationTokenSource.Token);
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception is: {ex.Message}");
+        }
     }
-    private async void StopListening(object? sender, PointerEventArgs args)
+    private async void StopListening(object? sender, EventArgs args)
     {
+        manuallyStopped = true;
         await speechToText.StopListenAsync(CancellationToken.None);
-        speechToText.RecognitionResultUpdated -= OnRecognitionTextUpdated;
+        speechToText.StateChanged -= OnSpeechStateChanged;
         speechToText.RecognitionResultCompleted -= OnRecognitionTextCompleted;
+        MicButton.Clicked += Listen;
+        MicButton.Clicked -= StopListening;
+        MicButton.SetAppThemeColor(BackgroundColorProperty, Color.FromArgb("#FF512BD4"), Color.FromArgb("#FFAC99EA"));
+        MicButton.Source = "mic_image.png";
+        
     }
-    void OnRecognitionTextUpdated(object? sender, SpeechToTextRecognitionResultUpdatedEventArgs args)
+    private async void OnRecognitionTextUpdated(object? sender, SpeechToTextRecognitionResultUpdatedEventArgs args)
     {
-        RecognitionText = args.RecognitionResult;
+        await Toast.Make($"{args.RecognitionResult}").Show(CancellationToken.None);
     }
-
-    void OnRecognitionTextCompleted(object? sender, SpeechToTextRecognitionResultCompletedEventArgs args)
+    private void OnRecognitionTextCompleted(object? sender, SpeechToTextRecognitionResultCompletedEventArgs args)
     {
-        RecognitionText = RecognitionText;
+        RecognizedText = args.RecognitionResult.Text;
+    }
+    private async void OnSpeechStateChanged(object? sender, SpeechToTextStateChangedEventArgs e)
+    {
+        if (e.State == SpeechToTextState.Silence || e.State == SpeechToTextState.Stopped)
+        {
+            MicButton.Clicked += Listen;
+            MicButton.Clicked -= StopListening;
+            MicButton.SetAppThemeColor(BackgroundColorProperty, Color.FromArgb("#FF512BD4"), Color.FromArgb("#FFAC99EA"));
+            MicButton.Source = "mic_image.png";
+            await Toast.Make($"Запись остановлена").Show(CancellationToken.None);
+        }
     }
     private void OnAvatarClicked(object? sender, EventArgs e)
     {
@@ -87,4 +110,5 @@ public partial class MainPage : ContentPage
             PageOverlayColor = Color.FromRgba(0, 0, 0, 120)
         });
     }
+    
 }

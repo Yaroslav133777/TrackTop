@@ -67,6 +67,16 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
+[C:/Desktop/TrackTop/TrackTop/Views/FolderCreator.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = TrackTop.Views.FolderCreator.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\FolderCreator.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\FolderCreator.xaml
+build_metadata.AdditionalFiles.Inflator = SourceGen
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
 [C:/Desktop/TrackTop/TrackTop/Views/FoldersPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = TrackTop.Views.FoldersPage.xaml

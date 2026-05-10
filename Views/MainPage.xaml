@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrackTop.MainPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              BackgroundColor="{AppThemeBinding Light=White, Dark = DimGrey}">
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
@@ -44,48 +45,37 @@
                 BackgroundColor="DarkGrey"
                 Clicked="OnAvatarClicked"/>
         </HorizontalStackLayout>
-        <Grid Grid.Row="1" Grid.Column="0"
-              Grid.ColumnSpan="3"
-              Padding="5"
-              ColumnSpacing="5"
-              ColumnDefinitions="*,*,*">
-            <Button Grid.Column="0"
-                    Text="На сегодня"
-                    FontSize="8"
-                    ImageSource="calendar_image.png"
-                    ContentLayout="Left, 2"
-                    TextColor="{AppThemeBinding Light=Black, Dark=White}"
-                    BackgroundColor="MediumPurple"
-                    HeightRequest="40"
-                    CornerRadius="25"
-                    LineBreakMode="NoWrap"
-                    Padding="2,0"
-                    HorizontalOptions="Fill"/>
-            <Button Grid.Column="1"
-                    Text="Запланированные"
-                    FontSize="8"
-                    ImageSource="schedule_image.png"
-                    ContentLayout="Left, 2"
-                    TextColor="{AppThemeBinding Light=Black, Dark=White}"
-                    BackgroundColor="MediumPurple"
-                    HeightRequest="40"
-                    CornerRadius="25"
-                    LineBreakMode="NoWrap"
-                    Padding="2,0"
-                    HorizontalOptions="Fill"/>
-            <Button Grid.Column="2"
-                    Text="Заметки"
-                    FontSize="8"
-                    ImageSource="notes_image.png"
-                    ContentLayout="Left, 2"
-                    TextColor="{AppThemeBinding Light=Black, Dark=White}"
-                    BackgroundColor="MediumPurple"
-                    HeightRequest="40"
-                    CornerRadius="25"
-                    LineBreakMode="NoWrap"
-                    Padding="2,0"
-                    HorizontalOptions="Fill"/>
-        </Grid>
+        <ScrollView Grid.Column="0" Grid.ColumnSpan="3" Grid.Row ="1" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+            <HorizontalStackLayout  Spacing="5" HorizontalOptions="Start" Padding="5">
+                <Button Text="На сегодня"
+                        FontSize="14"
+                        ImageSource="calendar_image.png"
+                        ContentLayout="Left, 5"
+                        TextColor="{AppThemeBinding Light=Black, Dark = White}"
+                        BackgroundColor="{AppThemeBinding Light=MediumPurple, Dark = MediumPurple}"
+                        HeightRequest="40"
+                        WidthRequest="140"
+                        CornerRadius="25"/>
+                <Button Text="Запланированные"
+                        FontSize="14"
+                        ImageSource="schedule_image.png"
+                        ContentLayout="Left, 5"
+                        TextColor="{AppThemeBinding Light=Black, Dark = White}"
+                        BackgroundColor="{AppThemeBinding Light=MediumPurple, Dark = MediumPurple}"
+                        HeightRequest="40"
+                        WidthRequest="180"
+                        CornerRadius="25"/>
+                <Button Text="Заметки"
+                        FontSize="14"
+                        ImageSource="notes_image.png"
+                        ContentLayout="Left, 5"
+                        TextColor="{AppThemeBinding Light=Black, Dark = White}"
+                        BackgroundColor="{AppThemeBinding Light=MediumPurple, Dark = MediumPurple}"
+                        HeightRequest="40"
+                        WidthRequest="120"
+                        CornerRadius="25"/>
+            </HorizontalStackLayout>
+        </ScrollView>
         <HorizontalStackLayout Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="End" Padding="50" Spacing="12">
             <Button BackgroundColor="{AppThemeBinding Light=White, Dark=Gray}"
                     ImageSource="plus_image.png"
@@ -93,19 +83,19 @@
                     WidthRequest="40"
                     CornerRadius="20"
                     Clicked="OnOpenPopupClicked">
+                <Button.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="Black" />
+                </Button.Behaviors>
             </Button>
-            <Button x:Name="MicButton"
+            <ImageButton x:Name="MicButton"
                     BackgroundColor="{AppThemeBinding Light=#FF512BD4, Dark=#FFAC99EA}"
-                    ImageSource="mic_image.png"
+                    Source="mic_image.png"
                     CornerRadius="32,5"
                     HeightRequest="65"
-                    WidthRequest="65">
-                <Button.GestureRecognizers>
-                    <PointerGestureRecognizer 
-                        PointerPressed="Listen"
-                        PointerReleased="StopListening"/>
-                </Button.GestureRecognizers>
-            </Button>
+                    WidthRequest="65"
+                    Padding="15"
+                    Clicked="Listen">
+            </ImageButton>
         </HorizontalStackLayout>
     </Grid>
 </ContentPage>

@@ -4,16 +4,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrackTop.Views.TaskCreator"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
-     <Border
-        WidthRequest="360"
-        Padding="0"
-        BackgroundColor="White"
-        StrokeThickness="0"
-        StrokeShape="RoundRectangle 22">
+     <Border x:Name="PopupCard"
+             WidthRequest="360"
+             Padding="0"
+             BackgroundColor="White"
+             StrokeThickness="0"
+             StrokeShape="RoundRectangle 22">
 
         <Grid RowDefinitions="Auto,*,Auto">
-
-            <!-- Header -->
             <Grid Grid.Row="0" Padding="20,18,20,14" ColumnDefinitions="*,Auto">
                 <Label
                     Text="Новая задача"
@@ -21,24 +19,9 @@
                     FontAttributes="Bold"
                     VerticalOptions="Center"
                     TextColor="Black"/>
-
-                <ImageButton
-                    Grid.Column="1"
-                    Source="close.png"
-                    BackgroundColor="Transparent"
-                    WidthRequest="22"
-                    HeightRequest="22"/>
             </Grid>
-
-            <BoxView Grid.Row="0"
-                     VerticalOptions="End"
-                     HeightRequest="1"
-                     Color="#E5E5E5" />
-
-            <!-- Content -->
-            <ScrollView Grid.Row="1">
+            <VerticalStackLayout Grid.Row="1">
                 <VerticalStackLayout Padding="20" Spacing="16">
-
                     <VerticalStackLayout Spacing="6">
                         <Label
                             Text="Название задачи"
@@ -50,21 +33,29 @@
                             Placeholder="Опишите задачу..."
                             AutoSize="TextChanges"
                             HeightRequest="90"
-                            BackgroundColor="#FAFAFA" />
+                            BackgroundColor="#FAFAFA"
+                            TextColor="Black"/>
                     </VerticalStackLayout>
-
-                    <Label
+                    <Button
                         Text="✦ Оптимизировать текст ИИ"
                         TextColor="#6B5CF6"
                         FontAttributes="Bold"
-                        FontSize="14" />
-
+                        FontSize="14"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="Start"/>
                     <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
                         <VerticalStackLayout Spacing="6">
-                            <Label Text="Дата"
-                                   FontSize="14"
-                                   FontAttributes="Bold"
-                                   TextColor="Black"/>
+                            <HorizontalStackLayout Spacing="3">
+                                <Image Source="calendar_image.png">
+                                    <Image.Behaviors>
+                                        <toolkit:IconTintColorBehavior TintColor="Black" />
+                                    </Image.Behaviors>
+                                </Image>
+                                <Label Text="Дата"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="Black"/>
+                            </HorizontalStackLayout>
                             <Border Stroke="#D9D9D9"
                                     StrokeShape="RoundRectangle 12"
                                     Padding="12,6">
@@ -73,19 +64,26 @@
                                                 Format="dd.MM.yyyy"
                                                 BackgroundColor="Transparent"
                                                 TextColor="Black"/>
-                                    <ImageButton Grid.Column="1"
-                                                 Source="calendar.png"
+                                    <Image Grid.Column="1"
+                                                 Source="date_range.png"
                                                  BackgroundColor="Transparent"
-                                                 WidthRequest="18"
-                                                 HeightRequest="18"/>
+                                                 WidthRequest="28"
+                                                 HeightRequest="28"/>
                                 </Grid>
                             </Border>
                         </VerticalStackLayout>
-
                         <VerticalStackLayout Grid.Column="1" Spacing="6">
-                            <Label Text="Время"
-                                   FontSize="14"
-                                   FontAttributes="Bold" />
+                            <HorizontalStackLayout Spacing="2">
+                                <Image Source="clock.png">
+                                    <Image.Behaviors>
+                                        <toolkit:IconTintColorBehavior TintColor="Black" />
+                                    </Image.Behaviors>
+                                </Image>
+                                <Label Text="Время"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="Black"/>
+                            </HorizontalStackLayout>
                             <Border Stroke="#D9D9D9"
                                     StrokeShape="RoundRectangle 12"
                                     Padding="12,6">
@@ -94,16 +92,15 @@
                                                 Format="HH:mm"
                                                 BackgroundColor="Transparent"
                                                 TextColor="Black"/>
-                                    <ImageButton Grid.Column="1"
+                                    <Image Grid.Column="1"
                                                  Source="clock.png"
                                                  BackgroundColor="Transparent"
-                                                 WidthRequest="18"
-                                                 HeightRequest="18"/>
+                                                 WidthRequest="28"
+                                                 HeightRequest="28"/>
                                 </Grid>
                             </Border>
                         </VerticalStackLayout>
                     </Grid>
-
                     <VerticalStackLayout Spacing="6">
                         <Label
                             Text="Папка"
@@ -113,7 +110,7 @@
                         <Border Stroke="#D9D9D9"
                                 StrokeShape="RoundRectangle 12"
                                 Padding="10,2">
-                            <Picker Title="Без папки" TextColor="Black">
+                            <Picker TextColor="Black" x:Name="FoldersPicker">
                                 <Picker.Items>
                                     <x:String>Без папки</x:String>
                                     <x:String>Учёба</x:String>
@@ -123,103 +120,49 @@
                             </Picker>
                         </Border>
                     </VerticalStackLayout>
-
                     <Grid ColumnDefinitions="*,Auto" Padding="0,6">
                         <Label Text="Регулярная задача"
                                VerticalOptions="Center" 
                                TextColor="Black"/>
-                        <Switch Grid.Column="1" />
+                        <Switch Grid.Column="1" 
+                                OffColor="#D9D9D9"
+                                OnColor="#2F2F2F"
+                                ThumbColor="White"/>
                     </Grid>
-
                     <Grid ColumnDefinitions="*,Auto" Padding="0,0,0,6">
                         <Label Text="Без уведомления"
                                VerticalOptions="Center" 
                                TextColor="Black"/>
-                        <Switch Grid.Column="1" />
+                        <Switch Grid.Column="1"
+                                x:Name="NotifySwitch"
+                                OffColor="#D9D9D9"
+                                OnColor="#2F2F2F"
+                                ThumbColor="White"/>
                     </Grid>
                 </VerticalStackLayout>
-            </ScrollView>
-
-            <!-- Footer -->
+            </VerticalStackLayout>
             <Grid Grid.Row="2"
                   ColumnDefinitions="*,*"
                   ColumnSpacing="12"
                   Padding="20,10,20,20">
-
                 <Button
                     Text="Отмена"
                     BackgroundColor="White"
                     TextColor="#6B5CF6"
                     BorderColor="#6B5CF6"
-                    BorderWidth="2"
+                    BorderWidth="1"
                     CornerRadius="12"
-                    HeightRequest="50"/>
-
+                    HeightRequest="50"
+                    Clicked="ClosePage"/>
                 <Button
                     Grid.Column="1"
                     Text="Создать"
-                    BackgroundColor="#A89AF7"
-                    TextColor="Black"
+                    BackgroundColor="#6B5CF6"
+                    TextColor="White"
                     CornerRadius="12"
                     HeightRequest="50"
-                    />
+                    Clicked="CreateTask"/>
             </Grid>
         </Grid>
     </Border>
-    <!-- <Border -->
-    <!--     BackgroundColor="White" -->
-    <!--     Padding="20" -->
-    <!--     StrokeShape="RoundRectangle 20" -->
-    <!--     WidthRequest="250" -->
-    <!--     HeightRequest="400"> -->
-    <!--      -->
-    <!--     <Grid> -->
-    <!--         <Grid.RowDefinitions> -->
-    <!--             <RowDefinition Height="Auto" /> -->
-    <!--             <RowDefinition Height="Auto"/> -->
-    <!--             <RowDefinition Height="Auto"/> -->
-    <!--         </Grid.RowDefinitions> -->
-    <!--         <Grid.ColumnDefinitions> -->
-    <!--             <ColumnDefinition Width="Auto"/> -->
-    <!--             <ColumnDefinition Width="Auto"/> -->
-    <!--         </Grid.ColumnDefinitions> -->
-    <!--         <VerticalStackLayout Spacing="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2"> -->
-    <!--             <Label -->
-    <!--                 Text="Название задачи" -->
-    <!--                 FontSize="10" -->
-    <!--                 TextColor="Black"/> -->
-    <!--             <Entry -->
-    <!--                 x:Name="TaskEntry" -->
-    <!--                 Placeholder="опишите задачу..." -->
-    <!--                 TextColor="Black"/> -->
-    <!--         </VerticalStackLayout> -->
-            <!-- <HorizontalStackLayout Grid.Column="0" Grid.Row="1"> -->
-            <!--     <Border -->
-            <!--         Stroke="#D1D5DB" -->
-            <!--         StrokeShape="RoundRectangle 12" -->
-            <!--         BackgroundColor="White" -->
-            <!--         Padding="12"> -->
-            <!-- -->
-            <!--         <Grid RowDefinitions="Auto,Auto" ColumnSpacing="10"> -->
-            <!--             <DatePicker -->
-            <!--                 x:Name="TaskDatePicker" -->
-            <!--                 Format="dd.MM.yyyy" -->
-            <!--                 TextColor="#111827" -->
-            <!--                 BackgroundColor="Transparent" /> -->
-            <!--             <Label -->
-            <!--                 Text="Выберите дату" -->
-            <!--                 FontSize="10"/> -->
-            <!--             <Button -->
-            <!--                 Grid.Row="0" -->
-            <!--                 ImageSource="calendar_image.png" -->
-            <!--                 ContentLayout="Right, 5" -->
-            <!--                 BackgroundColor="Transparent" -->
-            <!--                 WidthRequest="22" -->
-            <!--                 HeightRequest="22" -->
-            <!--                 Clicked="OnCalendarClicked" /> -->
-            <!--         </Grid> -->
-            <!--     </Border> -->
-            <!-- </HorizontalStackLayout> -->
-    <!--     </Grid> -->
-    <!-- </Border> -->
 </toolkit:Popup>

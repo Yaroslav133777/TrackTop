@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TrackTop.Views.FolderCreator"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    <Border 
+        BackgroundColor="White"
+        Stroke="#E0E0E0"
+        StrokeThickness="0"
+        WidthRequest="340"
+        HeightRequest="400"
+        Padding="14"
+        StrokeShape="RoundRectangle 22">
+
+        <VerticalStackLayout Spacing="20">
+
+            <!-- Заголовок -->
+            <Label Text="Новая папка" 
+                   TextColor="Black"
+                   FontSize="Title"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Start"/>
+
+            <!-- Название папки -->
+            <VerticalStackLayout Spacing="6">
+                <Label Text="Название папки" 
+                       FontSize="Medium"
+                       TextColor="#555555"/>
+                <Entry Placeholder="Название папки"
+                       PlaceholderColor="#9E9E9E"
+                       FontSize="Medium"
+                       BackgroundColor="#F5F5F5"
+                       HeightRequest="48"
+                       x:Name="NameEntry"/>
+            </VerticalStackLayout>
+
+            <!-- Цвет -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Цвет" 
+                       FontSize="Medium"
+                       TextColor="#555555"/>
+
+                <!-- Палитра цветов -->
+                <HorizontalStackLayout x:Name="ColorsContainer"
+                                       Spacing="10" 
+                                       HorizontalOptions="Center">
+                    <!-- Цвета будут заполняться в коде -->
+                </HorizontalStackLayout>
+                <HorizontalStackLayout x:Name="ColorsContainer2"
+                                       Spacing="10" 
+                                       HorizontalOptions="Center">
+                    <!-- Цвета будут заполняться в коде -->
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <!-- Кнопки -->
+            <Grid ColumnDefinitions="*,*" RowDefinitions="*" Padding="12" Margin="7" ColumnSpacing="10">
+                <Button Text="Отмена"
+                        Grid.Column="0"
+                        BackgroundColor="Transparent"
+                        TextColor="#6B5CF6"
+                        FontSize="Medium"
+                        HeightRequest="50"
+                        CornerRadius="8"
+                        BorderColor="#6B5CF6"
+                        BorderWidth="1"
+                        Clicked="ClosePage"/>
+
+                <Button Text="Создать"
+                        Grid.Column="1"
+                        BackgroundColor="#6B5CF6"
+                        TextColor="White"
+                        FontSize="Medium"
+                        HeightRequest="50"
+                        CornerRadius="12"/>
+            </Grid>
+
+        </VerticalStackLayout>
+    </Border>
+</toolkit:Popup>
