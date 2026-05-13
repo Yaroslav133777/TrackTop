@@ -1,8 +1,0 @@
-<api type="release" assembly-name="TrackTop" mvid="88cf81b8f12d471597358fdb697b25bc">
-  <module assembly-name="TrackTop" mvid="88cf81b8f12d471597358fdb697b25bc" mvid-bytes="uIHPiC3xFUeXNY/baXslvA==">
-    <types-scratch>
-      <entry key="crc648d28ace47478ce12/MainActivity" java-name="crc648d28ace47478ce12/MainActivity" managed-type-name="TrackTop.MainActivity" token="33554451" />
-      <entry key="crc648d28ace47478ce12/MainApplication" java-name="crc648d28ace47478ce12/MainApplication" managed-type-name="TrackTop.MainApplication" token="33554452" />
-    </types-scratch>
-  </module>
-</api>
