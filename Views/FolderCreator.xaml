@@ -32,7 +32,8 @@
                        FontSize="Medium"
                        BackgroundColor="#F5F5F5"
                        HeightRequest="48"
-                       x:Name="NameEntry"/>
+                       x:Name="NameEntry"
+                       TextColor="Black"/>
             </VerticalStackLayout>
 
             <!-- Цвет -->
@@ -62,7 +63,7 @@
                         TextColor="#6B5CF6"
                         FontSize="Medium"
                         HeightRequest="50"
-                        CornerRadius="8"
+                        CornerRadius="12"
                         BorderColor="#6B5CF6"
                         BorderWidth="1"
                         Clicked="ClosePage"/>
@@ -75,7 +76,7 @@
                         HeightRequest="50"
                         CornerRadius="12"/>
             </Grid>
-
+            
         </VerticalStackLayout>
     </Border>
 </toolkit:Popup>

@@ -19,7 +19,8 @@ public static class MauiProgram
                 fonts.AddFont("Inter_28pt-Bold.ttf", "InterBold");
             })
             .Services.AddSingleton<NavTabbedPage>()
-            .AddSingleton<ISpeechToText>(SpeechToText.Default);
+            .AddSingleton<ISpeechToText>(SpeechToText.Default)
+            .AddSingleton<AppStateService>();
 
 #if DEBUG
         builder.Logging.AddDebug();

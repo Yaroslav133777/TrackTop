@@ -3,20 +3,20 @@ using System.Runtime.CompilerServices;
 
 namespace TrackTop;
 
-public class Folder : INotifyPropertyChanged
+public class FolderModel : INotifyPropertyChanged
 {
-    public string FolderName { get; set; } = string.Empty;
-    public List<Task> Tasks { get; set; } = new List<Task>();
+    public string FolderName { get; set; } = "default";
+    public List<TaskModel> Tasks { get; set; } = new List<TaskModel>();
     public Color FolderColor { get; set; }
 
-    public Folder(int red, int green, int blue)
+    public FolderModel(string color)
     {
-        FolderColor = new Color(red, green, blue);
+        FolderColor = Color.FromArgb(color);
     }
 
-    public void AddTask(Task task)
+    public void AddTask(TaskModel taskModel)
     {
-        Tasks.Add(task);
+        Tasks.Add(taskModel);
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;

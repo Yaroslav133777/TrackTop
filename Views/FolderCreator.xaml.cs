@@ -52,7 +52,7 @@ public partial class FolderCreator : Popup
                 }
             };
             var tapGesture = new TapGestureRecognizer();
-            tapGesture.Tapped += (s, e) => SelectColor(border, color);
+            tapGesture.Tapped += (a,b) => SelectColor(border, color);
             border.GestureRecognizers.Add(tapGesture);
             if (colorsCounter <= 6)
             {
@@ -84,6 +84,7 @@ public partial class FolderCreator : Popup
 
         SelectedColor = color;
     }
+    
     private async void ClosePage(object? sender, EventArgs args)
     {
         await CloseAsync();

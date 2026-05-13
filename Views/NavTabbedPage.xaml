@@ -4,10 +4,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TrackTop"
              x:Class="TrackTop.NavTabbedPage"
-             BarBackgroundColor="{AppThemeBinding Light=WhiteSmoke, Dark = DimGrey}"
+             BarBackgroundColor="{AppThemeBinding Light=#F7F7FA, Dark=#1F1F23}"
              BarTextColor="{AppThemeBinding Light=Black, Dark = White}"
              SelectedTabColor="{AppThemeBinding Light=MediumPurple, Dark = MediumPurple}"
-             UnselectedTabColor="Black"
+             UnselectedTabColor="{AppThemeBinding Light=#1F1F23, Dark=#F7F7FA}"
              xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
              android:TabbedPage.ToolbarPlacement="Bottom">
     <local:MainPage

@@ -3,99 +3,308 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrackTop.MainPage"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             BackgroundColor="{AppThemeBinding Light=White, Dark = DimGrey}">
-    <Grid x:Name="MainGrid">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        <VerticalStackLayout Grid.Row="0" Grid.Column="0" Padding="10">
-            <Label
-                x:Name="MorningText"
-                Text="Добро пожаловать!"
-                FontSize="25"
-                TextColor="{AppThemeBinding Light=Black, Dark = White}"/>
-            <Label
-                x:Name="UsernameText"
-                Text="Username"
-                FontSize="20"
-                TextColor="{AppThemeBinding Light=Black, Dark = White}"/>
-        </VerticalStackLayout>
-        <HorizontalStackLayout Grid.Column="2" Grid.Row="0"  Spacing="10" HorizontalOptions="End" VerticalOptions="Center" Padding="10">
-            <ImageButton
-                x:Name="DarkModeButton"
-                Source="dark_mode.png"
-                HeightRequest="40"
-                WidthRequest="40"
-                CornerRadius="20"
-                BackgroundColor="DarkOrchid"
-                Clicked="ThemeSwitcher"/>
-            <ImageButton
-                x:Name="AvatarButton"
-                Source="account_image.png"
-                HeightRequest="40"
-                WidthRequest="40"
-                CornerRadius="20"
-                BackgroundColor="DarkGrey"
-                Clicked="OnAvatarClicked"/>
-        </HorizontalStackLayout>
-        <ScrollView Grid.Column="0" Grid.ColumnSpan="3" Grid.Row ="1" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-            <HorizontalStackLayout  Spacing="5" HorizontalOptions="Start" Padding="5">
+             BackgroundColor="{AppThemeBinding Light=#F7F7FA, Dark=#1F1F23}">
+
+    <Grid x:Name="MainGrid"
+          RowDefinitions="Auto,Auto,*,Auto">
+
+        <!-- Верх -->
+        <Grid Grid.Row="0"
+              Padding="18,14,18,10"
+              ColumnDefinitions="*,Auto,Auto"
+              ColumnSpacing="10">
+
+            <VerticalStackLayout Spacing="0">
+                <Label x:Name="MorningText"
+                       Text="Доброе утро"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="{AppThemeBinding Light=#161616, Dark=White}" />
+
+                <Label x:Name="UsernameText"
+                       Text="{Binding Username}"
+                       FontSize="13"
+                       TextColor="{AppThemeBinding Light=#7B7B84, Dark=#C9C9CF}" />
+            </VerticalStackLayout>
+
+            <ImageButton Grid.Column="1"
+                         x:Name="DarkModeButton"
+                         Source="dark_mode.png"
+                         HeightRequest="34"
+                         WidthRequest="34"
+                         CornerRadius="17"
+                         Padding="6"
+                         BackgroundColor="Transparent"
+                         Clicked="ThemeSwitcher">
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="{Binding ThemeIconColor}" />
+                </ImageButton.Behaviors>
+            </ImageButton>
+
+            <Border Grid.Column="2"
+                    WidthRequest="34"
+                    HeightRequest="34"
+                    BackgroundColor="{AppThemeBinding Light=#ECEBFF, Dark=#3C355D}"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 17">
+
+                <Grid>
+                    <Label Text="U"
+                           FontSize="15"
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=#6E58F3, Dark=#D6CEFF}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnAvatarClicked" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- Категории -->
+        <ScrollView Grid.Row="1"
+                    Orientation="Horizontal"
+                    HorizontalScrollBarVisibility="Never">
+
+            <HorizontalStackLayout Padding="18,6,18,10"
+                                   Spacing="8">
+
+                <!-- Активная кнопка по умолчанию -->
                 <Button Text="На сегодня"
                         FontSize="14"
+                        FontAttributes="Bold"
                         ImageSource="calendar_image.png"
-                        ContentLayout="Left, 5"
-                        TextColor="{AppThemeBinding Light=Black, Dark = White}"
-                        BackgroundColor="{AppThemeBinding Light=MediumPurple, Dark = MediumPurple}"
-                        HeightRequest="40"
-                        WidthRequest="140"
-                        CornerRadius="25"/>
+                        ContentLayout="Left, 6"
+                        TextColor="{AppThemeBinding Light=#4B4B55, Dark=White}"
+                        BackgroundColor="{AppThemeBinding Light=White, Dark=#2B2B31}"
+                        BorderColor="{AppThemeBinding Light=#E4E4E8, Dark=#3B3B42}"
+                        HeightRequest="38"
+                        WidthRequest="150"
+                        CornerRadius="19"
+                        x:Name="TodayButton">
+                    <Button.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SelectButton" />
+                    </Button.GestureRecognizers>
+                </Button>
+
                 <Button Text="Запланированные"
                         FontSize="14"
                         ImageSource="schedule_image.png"
-                        ContentLayout="Left, 5"
-                        TextColor="{AppThemeBinding Light=Black, Dark = White}"
-                        BackgroundColor="{AppThemeBinding Light=MediumPurple, Dark = MediumPurple}"
-                        HeightRequest="40"
-                        WidthRequest="180"
-                        CornerRadius="25"/>
+                        ContentLayout="Left, 6"
+                        TextColor="{AppThemeBinding Light=#4B4B55, Dark=White}"
+                        BackgroundColor="{AppThemeBinding Light=White, Dark=#2B2B31}"
+                        BorderColor="{AppThemeBinding Light=#E4E4E8, Dark=#3B3B42}"
+                        BorderWidth="1"
+                        HeightRequest="38"
+                        WidthRequest="190"
+                        CornerRadius="19">
+                    <Button.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SelectButton" />
+                    </Button.GestureRecognizers>
+                </Button>
+
                 <Button Text="Заметки"
                         FontSize="14"
                         ImageSource="notes_image.png"
-                        ContentLayout="Left, 5"
-                        TextColor="{AppThemeBinding Light=Black, Dark = White}"
-                        BackgroundColor="{AppThemeBinding Light=MediumPurple, Dark = MediumPurple}"
-                        HeightRequest="40"
-                        WidthRequest="120"
-                        CornerRadius="25"/>
+                        ContentLayout="Left, 6"
+                        TextColor="{AppThemeBinding Light=#4B4B55, Dark=White}"
+                        BackgroundColor="{AppThemeBinding Light=White, Dark=#2B2B31}"
+                        BorderColor="{AppThemeBinding Light=#E4E4E8, Dark=#3B3B42}"
+                        BorderWidth="1"
+                        HeightRequest="38"
+                        WidthRequest="110"
+                        CornerRadius="19">
+                    <Button.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SelectButton" />
+                    </Button.GestureRecognizers>
+                </Button>
             </HorizontalStackLayout>
         </ScrollView>
-        <HorizontalStackLayout Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="End" Padding="50" Spacing="12">
-            <Button BackgroundColor="{AppThemeBinding Light=White, Dark=Gray}"
-                    ImageSource="plus_image.png"
-                    HeightRequest="40"
-                    WidthRequest="40"
-                    CornerRadius="20"
-                    Clicked="OnOpenPopupClicked">
-                <Button.Behaviors>
-                    <toolkit:IconTintColorBehavior TintColor="Black" />
-                </Button.Behaviors>
-            </Button>
-            <ImageButton x:Name="MicButton"
-                    BackgroundColor="{AppThemeBinding Light=#FF512BD4, Dark=#FFAC99EA}"
-                    Source="mic_image.png"
-                    CornerRadius="32,5"
-                    HeightRequest="65"
-                    WidthRequest="65"
-                    Padding="15"
-                    Clicked="Listen">
-            </ImageButton>
+
+        <!-- Область задач -->
+        <Grid Grid.Row="2"
+              Padding="18,6,18,12">
+
+            <!-- Список задач -->
+            <CollectionView x:Name="TasksCollection"
+                            IsVisible="False"
+                            SelectionMode="None"
+                            VerticalOptions="FillAndExpand"
+                            Margin="0,0,0,12">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#2A2A30}"
+                                Stroke="{AppThemeBinding Light=#ECECF0, Dark=#36363D}"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 18"
+                                Padding="14,12"
+                                Margin="0,0,0,2">
+
+                            <Border.Shadow>
+                                <Shadow Brush="#14000000"
+                                        Offset="0,3"
+                                        Radius="10"
+                                        Opacity="0.12" />
+                            </Border.Shadow>
+
+                            <Grid ColumnDefinitions="Auto,*,Auto"
+                                  ColumnSpacing="12">
+
+                                <Border WidthRequest="22"
+                                        HeightRequest="22"
+                                        Stroke="#D8D8DF"
+                                        StrokeThickness="1.5"
+                                        BackgroundColor="Transparent"
+                                        StrokeShape="RoundRectangle 11"
+                                        VerticalOptions="Start" />
+
+                                <VerticalStackLayout Grid.Column="1" Spacing="4">
+                                    <Label Text="{Binding Title}"
+                                           FontSize="15"
+                                           FontAttributes="Bold"
+                                           TextColor="{AppThemeBinding Light=#191919, Dark=White}" />
+
+                                    <Label Text="{Binding Description}"
+                                           FontSize="13"
+                                           TextColor="{AppThemeBinding Light=#777783, Dark=#C9C9CF}" />
+
+                                    <HorizontalStackLayout Spacing="8">
+                                        <Border BackgroundColor="#F2EEFF"
+                                                StrokeThickness="0"
+                                                Padding="8,3"
+                                                StrokeShape="RoundRectangle 10"
+                                                IsVisible="{Binding HasTag}">
+                                            <Label Text="{Binding Tag}"
+                                                   FontSize="11"
+                                                   TextColor="#6B57EE" />
+                                        </Border>
+
+                                        <Label Text="{Binding Time}"
+                                               FontSize="12"
+                                               TextColor="{AppThemeBinding Light=#8B8B95, Dark=#BEBEC6}" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+
+                                <Image Grid.Column="2"
+                                       Source="more_image.png"
+                                       WidthRequest="18"
+                                       HeightRequest="18"
+                                       VerticalOptions="Start"
+                                       IsVisible="False" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Пустое состояние -->
+            <VerticalStackLayout x:Name="EmptyStateLayout"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center"
+                                 Spacing="10"
+                                 IsVisible="True">
+
+                <Border WidthRequest="72"
+                        HeightRequest="72"
+                        BackgroundColor="{AppThemeBinding Light=#F2F2F5, Dark=#2B2B31}"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 36"
+                        HorizontalOptions="Center">
+
+                    <Image Source="calendar_image.png"
+                           WidthRequest="34"
+                           HeightRequest="34"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
+                        <Image.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="{Binding ThemeTextColor}" />
+                        </Image.Behaviors>
+                    </Image>
+                </Border>
+
+                <Label Text="Нет задач"
+                       FontSize="17"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       TextColor="{AppThemeBinding Light=#1D1D1F, Dark=White}" />
+
+                <Label Text="На сегодня задач нет. Отличный день!"
+                       FontSize="13"
+                       HorizontalTextAlignment="Center"
+                       TextColor="{AppThemeBinding Light=#80808A, Dark=#C7C7CE}" />
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- Низ -->
+        <HorizontalStackLayout Grid.Row="3"
+                               HorizontalOptions="Center"
+                               VerticalOptions="End"
+                               Spacing="14"
+                               Padding="0,0,0,20">
+            <Border WidthRequest="46"
+                    HeightRequest="46"
+                    BackgroundColor="{AppThemeBinding Light=White, Dark=#2B2B31}"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 23"
+                    VerticalOptions="Center">
+                <Border.Shadow>
+                    <Shadow Brush="#22000000"
+                            Offset="0,4"
+                            Radius="10"
+                            Opacity="0.16" />
+                </Border.Shadow>
+                <Grid>
+                    <Image Source="plus_image.png"
+                           WidthRequest="20"
+                           HeightRequest="20"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
+                        <Image.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="{Binding ThemeTextColor}" />
+                        </Image.Behaviors>
+                    </Image>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnOpenPopupClicked" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </Border>
+            <Border WidthRequest="178"
+                    HeightRequest="86"
+                    BackgroundColor="{AppThemeBinding Light=White, Dark=#2B2B31}"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 38"
+                    VerticalOptions="Center">
+                <Border.Shadow>
+                    <Shadow Brush="#22000000"
+                            Offset="0,5"
+                            Radius="16"
+                            Opacity="0.14" />
+                </Border.Shadow>
+                <VerticalStackLayout HorizontalOptions="Center"
+                                     VerticalOptions="Center"
+                                     Spacing="5">
+
+                    <ImageButton x:Name="MicButton"
+                                 BackgroundColor="#5B4CF0"
+                                 Source="mic_image.png"
+                                 HeightRequest="56"
+                                 WidthRequest="56"
+                                 CornerRadius="28"
+                                 Padding="14"
+                                 Clicked="Listen"
+                                 HorizontalOptions="Center" />
+
+                    <Label Text="Удерживайте для записи"
+                           FontSize="12"
+                           HorizontalTextAlignment="Center"
+                           TextColor="{AppThemeBinding Light=#55555E, Dark=#D0D0D5}" />
+                </VerticalStackLayout>
+            </Border>
         </HorizontalStackLayout>
     </Grid>
 </ContentPage>
