@@ -11,8 +11,10 @@ public partial class MainPage : ContentPage
     {
         speechToText = Application.Current?.Handler?.MauiContext?.Services.GetService<ISpeechToText>() ?? SpeechToText.Default;
         InitializeComponent();
+        if (Application.Current?.RequestedTheme == AppTheme.Light)
+            DarkModeButton.Source = "sunny.png";
         selectedButton = TodayButton;
-        BindingContext = App.AppState;
+        BindingContext = new AppStateService();
     }
     private Button selectedButton;
     private readonly ISpeechToText speechToText;
@@ -21,8 +23,8 @@ public partial class MainPage : ContentPage
     private string RecognizedText { get; set; }
     public Color ThemeIconColor =>
         Application.Current?.RequestedTheme == AppTheme.Dark
-            ? Colors.White
-            : Colors.DimGray;
+            ? Colors.White 
+            : Colors.Black;
     public Color ThemeTextColor =>
         Application.Current?.RequestedTheme == AppTheme.Dark
             ? Colors.White
@@ -101,10 +103,14 @@ public partial class MainPage : ContentPage
         if (App.Current.RequestedTheme == AppTheme.Dark)
         {
             App.Current.UserAppTheme = AppTheme.Light;
+            if (sender is ImageButton button)
+                button.Source = "sunny.png";
         }
         else if (App.Current.RequestedTheme == AppTheme.Light)
         {
             App.Current.UserAppTheme = AppTheme.Dark;
+            if (sender is ImageButton button)
+                button.Source = "dark_mode.png";
         }
     }
     private async void OnOpenPopupClicked(object sender, EventArgs e)

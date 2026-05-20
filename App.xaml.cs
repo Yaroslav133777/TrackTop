@@ -4,7 +4,6 @@ namespace TrackTop;
 
 public partial class App : Application
 {
-    public static AppStateService AppState { get; private set; } = new AppStateService();
     public App()
     {
         InitializeComponent();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Views;
@@ -11,10 +12,13 @@ using Microsoft.Maui.Controls.Shapes;
 namespace TrackTop.Views;
 public partial class FolderCreator : Popup
 {
+    private ICommand AddFolderCommand { get; set; }
     public FolderCreator()
     {
+        AddFolderCommand = new Command(x => AddFolder(SelectedColor.ToArgbHex()), x=> CanAddFolder());
         InitializeComponent();
         CreateColorOptions();
+        // BindingContext = new AppStateService();
     }
     private Border? _selectedBorder;
     public Color SelectedColor { get; private set; }
@@ -88,6 +92,17 @@ public partial class FolderCreator : Popup
     private async void ClosePage(object? sender, EventArgs args)
     {
         await CloseAsync();
+    }
+
+    private void AddFolder(string color)
+    {
+        AppStateService ast = new AppStateService();
+        ast.Folders.Add(new FolderModel(color));
+    }
+
+    private bool CanAddFolder()
+    {
+        return !string.IsNullOrEmpty(NameEntry.Text);
     }
 
 }

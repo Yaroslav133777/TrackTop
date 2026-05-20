@@ -74,7 +74,10 @@
                         TextColor="White"
                         FontSize="Medium"
                         HeightRequest="50"
-                        CornerRadius="12"/>
+                        CornerRadius="12"
+                        Command="{Binding AddFolderCommand}">
+                    
+                </Button>
             </Grid>
             
         </VerticalStackLayout>

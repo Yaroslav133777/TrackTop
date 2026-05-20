@@ -13,6 +13,7 @@ public partial class FoldersPage : ContentPage
     public FoldersPage()
     {
         InitializeComponent();
+        BindingContext = new AppStateService();
     }
 
     private async void OnOpenPopupClicked(object sender, EventArgs e)

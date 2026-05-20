@@ -49,7 +49,7 @@
                     StrokeShape="RoundRectangle 17">
 
                 <Grid>
-                    <Label Text="U"
+                    <Label Text="{Binding UsernameFirstLetter}"
                            FontSize="15"
                            FontAttributes="Bold"
                            TextColor="{AppThemeBinding Light=#6E58F3, Dark=#D6CEFF}"
