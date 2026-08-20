@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Views;
@@ -12,16 +11,17 @@ using Microsoft.Maui.Controls.Shapes;
 namespace TrackTop.Views;
 public partial class FolderCreator : Popup
 {
-    private ICommand AddFolderCommand { get; set; }
-    public FolderCreator()
+    private readonly AppStateService _appState;
+    private Border? _selectedBorder;
+    public Color? SelectedColor { get; private set; }
+
+    public FolderCreator(AppStateService? appState = null)
     {
-        AddFolderCommand = new Command(x => AddFolder(SelectedColor.ToArgbHex()), x=> CanAddFolder());
+        _appState = appState ?? Application.Current?.Handler?.MauiContext?.Services.GetService<AppStateService>() ?? new AppStateService();
         InitializeComponent();
         CreateColorOptions();
-        // BindingContext = new AppStateService();
+        BindingContext = this;
     }
-    private Border? _selectedBorder;
-    public Color SelectedColor { get; private set; }
 
     private void CreateColorOptions()
     {
@@ -72,19 +72,22 @@ public partial class FolderCreator : Popup
         }
     }
 
-    private void SelectColor(Border border, Color color)
+    private async void SelectColor(Border border, Color color)
     {
-        // Снимаем выделение с предыдущего
-        if (_selectedBorder != null)
+        // Animate previous selection out
+        if (_selectedBorder != null && _selectedBorder != border)
         {
+            await _selectedBorder.ScaleTo(1.0, 150, Easing.CubicOut);
             _selectedBorder.StrokeThickness = 0;
             _selectedBorder.Stroke = null;
         }
 
-        // Выделяем новый
+        // Animate new selection in
         _selectedBorder = border;
         _selectedBorder.StrokeThickness = 4;
         _selectedBorder.Stroke = Colors.White;
+        await _selectedBorder.ScaleTo(1.15, 150, Easing.CubicOut);
+        await _selectedBorder.ScaleTo(1.0, 150, Easing.CubicOut);
 
         SelectedColor = color;
     }
@@ -94,15 +97,24 @@ public partial class FolderCreator : Popup
         await CloseAsync();
     }
 
-    private void AddFolder(string color)
+    private async void OnCreateClicked(object? sender, EventArgs args)
     {
-        AppStateService ast = new AppStateService();
-        ast.Folders.Add(new FolderModel(color));
+        if (!CanAddFolder()) return;
+        
+        var folder = new FolderModel(SelectedColor!.ToArgbHex())
+        {
+            FolderName = NameEntry.Text?.Trim() ?? "Новая папка"
+        };
+        
+        _appState.Folders.Add(folder);
+        
+        _appState.SaveData();
+        
+        await CloseAsync();
     }
 
     private bool CanAddFolder()
     {
-        return !string.IsNullOrEmpty(NameEntry.Text);
+        return !string.IsNullOrWhiteSpace(NameEntry.Text) && SelectedColor != null;
     }
-
 }

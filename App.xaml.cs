@@ -11,7 +11,18 @@ public partial class App : Application
     }
     protected override Window CreateWindow(IActivationState? activationState)
     {
-        var window = new Window(new NavTabbedPage());
+        var services = Handler?.MauiContext?.Services ?? Microsoft.Maui.Controls.Application.Current?.Handler?.MauiContext?.Services;
+        
+        var appState = services?.GetService<AppStateService>() ?? new AppStateService();
+
+        UserAppTheme = appState.DarkTheme ? AppTheme.Dark : AppTheme.Light;
+
+        var navPage = services?.GetService<NavTabbedPage>()
+            ?? new NavTabbedPage(appState, services ?? new ServiceCollection().BuildServiceProvider());
+
+        var window = new Window(navPage);
+        window.Stopped += (_, _) => appState.SaveData();
+        window.Destroying += (_, _) => appState.SaveData();
 
 #if WINDOWS
         window.MinimumWidth = 850;  

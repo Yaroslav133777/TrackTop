@@ -68,16 +68,14 @@
                         BorderWidth="1"
                         Clicked="ClosePage"/>
 
-                <Button Text="Создать"
+<Button Text="Создать"
                         Grid.Column="1"
                         BackgroundColor="#6B5CF6"
                         TextColor="White"
                         FontSize="Medium"
                         HeightRequest="50"
                         CornerRadius="12"
-                        Command="{Binding AddFolderCommand}">
-                    
-                </Button>
+                        Clicked="OnCreateClicked"/>
             </Grid>
             
         </VerticalStackLayout>

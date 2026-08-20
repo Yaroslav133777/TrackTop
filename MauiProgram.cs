@@ -1,6 +1,7 @@
-﻿using CommunityToolkit.Maui;
+﻿﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui.Media;
+using Microsoft.Extensions.DependencyInjection;
 namespace TrackTop;
 
 public static class MauiProgram
@@ -18,9 +19,13 @@ public static class MauiProgram
                 fonts.AddFont("Inter_28pt-SemiBold.ttf", "InterSemiBold");
                 fonts.AddFont("Inter_28pt-Bold.ttf", "InterBold");
             })
-            .Services.AddSingleton<NavTabbedPage>()
-            .AddSingleton<ISpeechToText>(SpeechToText.Default)
-            .AddSingleton<AppStateService>();
+            .Services.AddSingleton<AppStateService>()
+            .AddTransient<MainPage>()
+            .AddTransient<FoldersPage>()
+            .AddTransient<SettingsPage>()
+            .AddTransient<NavTabbedPage>(sp => new NavTabbedPage(
+                sp.GetRequiredService<AppStateService>(), 
+                sp));
 
 #if DEBUG
         builder.Logging.AddDebug();

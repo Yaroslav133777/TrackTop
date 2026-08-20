@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TrackTop.Views.UsernameEditor"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    <Border
+        BackgroundColor="White"
+        Stroke="#E0E0E0"
+        StrokeThickness="0"
+        WidthRequest="340"
+        Padding="20"
+        StrokeShape="RoundRectangle 22">
+
+        <VerticalStackLayout Spacing="18">
+
+            <Label Text="Имя пользователя"
+                   TextColor="Black"
+                   FontSize="Title"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Start"/>
+
+            <VerticalStackLayout Spacing="6">
+                <Label Text="Введите новое имя"
+                       FontSize="Medium"
+                       TextColor="#555555"/>
+                <Entry x:Name="NameEntry"
+                       Placeholder="Username"
+                       PlaceholderColor="#9E9E9E"
+                       FontSize="Medium"
+                       BackgroundColor="#F5F5F5"
+                       HeightRequest="48"
+                       TextColor="Black"
+                       MaxLength="24"/>
+            </VerticalStackLayout>
+
+            <Grid ColumnDefinitions="*,*"
+                  ColumnSpacing="10"
+                  Padding="0,4,0,0">
+                <Button Text="Отмена"
+                        Grid.Column="0"
+                        BackgroundColor="Transparent"
+                        TextColor="#6B5CF6"
+                        FontSize="Medium"
+                        HeightRequest="50"
+                        CornerRadius="12"
+                        BorderColor="#6B5CF6"
+                        BorderWidth="1"
+                        Clicked="ClosePage"/>
+
+                <Button Text="Сохранить"
+                        Grid.Column="1"
+                        BackgroundColor="#6B5CF6"
+                        TextColor="White"
+                        FontSize="Medium"
+                        HeightRequest="50"
+                        CornerRadius="12"
+                        Clicked="OnSaveClicked"/>
+            </Grid>
+        </VerticalStackLayout>
+    </Border>
+</toolkit:Popup>

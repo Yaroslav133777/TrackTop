@@ -4,117 +4,193 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrackTop.FoldersPage"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             BackgroundColor="{AppThemeBinding Light=White, Dark = DimGrey}">
-    <ScrollView>
-        <VerticalStackLayout
-            Padding="20,18,20,24"
-            Spacing="18">
+             BackgroundColor="{AppThemeBinding Light=#F5F0FF, Dark=#16121D}">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Offset="0.0" Color="{AppThemeBinding Light=#F7F3FF, Dark=#16121D}" />
+                <GradientStop Offset="1.0" Color="{AppThemeBinding Light=#E9DEFF, Dark=#221A2E}" />
+            </LinearGradientBrush>
+        </Grid.Background>
 
-            <!-- Верхняя панель -->
-            <Grid
-                ColumnDefinitions="*,Auto"
-                VerticalOptions="Center">
-                
+        <ScrollView>
+            <VerticalStackLayout
+                Padding="20,18,20,24"
+                Spacing="18">
+
+                <!-- Верхняя панель -->
+                <Grid
+                    ColumnDefinitions="*,Auto"
+                    VerticalOptions="Center">
+
+                    <VerticalStackLayout Spacing="2">
+                        <Label
+                            Text="Папки"
+                            FontSize="28"
+                            FontAttributes="Bold"
+                            TextColor="{AppThemeBinding Light=#1B1333, Dark=White}"
+                            VerticalOptions="Center" />
+
+                        <Label
+                            Text="Организуйте задачи по темам"
+                            FontSize="13"
+                            TextColor="{AppThemeBinding Light=#8A7BB0, Dark=#AEA3C5}" />
+                    </VerticalStackLayout>
+
+                    <Border
+                        Grid.Column="1"
+                        WidthRequest="42"
+                        HeightRequest="42"
+                        BackgroundColor="{AppThemeBinding Light=#6B5CF6, Dark=#8B7CFF}"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 21"
+                        VerticalOptions="Center">
+                        <Border.Shadow>
+                            <Shadow Brush="#40000000"
+                                    Offset="0,4"
+                                    Radius="10"
+                                    Opacity="0.25" />
+                        </Border.Shadow>
+                        <Image
+                            Source="plus_image.png"
+                            WidthRequest="20"
+                            HeightRequest="20"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="White" />
+                            </Image.Behaviors>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnOpenPopupClicked" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Border>
+                </Grid>
+
+                <!-- Заголовок секции -->
                 <Label
-                    Text="Папки"
-                    FontSize="28"
+                    Text="МОИ ПАПКИ"
+                    FontSize="13"
                     FontAttributes="Bold"
-                    TextColor="#111111"
-                    VerticalOptions="Center" />
+                    TextColor="{AppThemeBinding Light=#8A7BB0, Dark=#9B93A8}"
+                    Margin="2,0,0,0" />
 
-                <Button
-                    Grid.Column="1"
-                    ImageSource="plus_image.png"
-                    BackgroundColor="Transparent"
-                    Padding="8"
-                    WidthRequest="40"
-                    HeightRequest="40"
-                    CornerRadius="20" 
-                    Clicked="OnOpenPopupClicked">
-                    <Button.Behaviors>
-                        <toolkit:IconTintColorBehavior TintColor="Black" />
-                    </Button.Behaviors>
-                </Button>
-            </Grid>
+                <!-- Сетка папок -->
+                <FlexLayout
+                    Wrap="Wrap"
+                    Direction="Row"
+                    JustifyContent="Start"
+                    AlignItems="Start"
+                    BindableLayout.ItemsSource="{Binding Folders}">
 
-            <!-- Заголовок секции -->
-            <Label
-                Text="МОИ ПАПКИ"
-                FontSize="13"
-                FontAttributes="Bold"
-                TextColor="#8F8F95"
-                Margin="2,0,0,0" />
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                WidthRequest="150"
+                                HeightRequest="112"
+                                Margin="0,0,14,14"
+                                Padding="14"
+                                StrokeThickness="1"
+                                Stroke="{AppThemeBinding Light=#E7E2F5, Dark=#3A3246}"
+                                StrokeShape="RoundRectangle 18">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnFolderTapped"
+                                                          CommandParameter="{Binding .}" />
+                                </Border.GestureRecognizers>
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Offset="0.0" Color="{AppThemeBinding Light=White, Dark=#272130}" />
+                                        <GradientStop Offset="1.0" Color="{AppThemeBinding Light=#F6F2FF, Dark=#2E2738}" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Border.Shadow>
+                                    <Shadow Brush="#22000000"
+                                            Offset="0,4"
+                                            Radius="12"
+                                            Opacity="0.12" />
+                                </Border.Shadow>
 
-            <!-- Сетка папок -->
-            <FlexLayout
-                Wrap="Wrap"
-                Direction="Row"
-                JustifyContent="Start"
-                AlignItems="Start"
-                BindableLayout.ItemsSource="{Binding Folders}">
+                                <Grid RowDefinitions="Auto,*,Auto"
+                                      ColumnDefinitions="*,Auto">
 
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <Frame
-                            WidthRequest="150"
-                            HeightRequest="105"
-                            Margin="0,0,14,14"
-                            Padding="14"
-                            CornerRadius="14"
-                            HasShadow="False"
-                            BorderColor="#E7E7EA"
-                            BackgroundColor="White">
+                                    <!-- Иконка -->
+                                    <Border
+                                        WidthRequest="38"
+                                        HeightRequest="38"
+                                        Padding="0"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 11"
+                                        BackgroundColor="{Binding IconBackground}"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Start">
 
-                            <Grid RowDefinitions="Auto,*,Auto"
-                                  ColumnDefinitions="*,Auto">
+                                        <Label
+                                            Text="&#xE8B7;"
+                                            FontFamily="MaterialIcons"
+                                            FontSize="20"
+                                            TextColor="{Binding IconColor}"
+                                            HorizontalTextAlignment="Center"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center" />
+                                    </Border>
 
-                                <!-- Иконка -->
-                                <Frame
-                                    WidthRequest="36"
-                                    HeightRequest="36"
-                                    Padding="0"
-                                    CornerRadius="10"
-                                    HasShadow="False"
-                                    BackgroundColor="{Binding IconBackground}"
-                                    BorderColor="Transparent"
-                                    HorizontalOptions="Start"
-                                    VerticalOptions="Start">
-
+                                    <!-- Счётчик -->
                                     <Label
-                                        Text="&#xE8B7;"
-                                        FontFamily="MaterialIcons"
-                                        FontSize="20"
-                                        TextColor="{Binding IconColor}"
-                                        HorizontalTextAlignment="Center"
-                                        VerticalTextAlignment="Center"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                </Frame>
+                                        Grid.Column="1"
+                                        Text="{Binding Count}"
+                                        FontSize="15"
+                                        FontAttributes="Bold"
+                                        TextColor="{AppThemeBinding Light=#5B4CF0, Dark=#B4A8FF}"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Start" />
 
-                                <!-- Счётчик -->
-                                <Label
-                                    Grid.Column="1"
-                                    Text="{Binding Count}"
-                                    FontSize="16"
-                                    FontAttributes="Bold"
-                                    TextColor="#202124"
-                                    HorizontalOptions="End"
-                                    VerticalOptions="Start" />
+                                    <!-- Название -->
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.ColumnSpan="2"
+                                        Text="{Binding Title}"
+                                        FontSize="16"
+                                        FontAttributes="Bold"
+                                        TextColor="{AppThemeBinding Light=#202124, Dark=White}"
+                                        LineBreakMode="TailTruncation" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
 
-                                <!-- Название -->
-                                <Label
-                                    Grid.Row="2"
-                                    Grid.ColumnSpan="2"
-                                    Text="{Binding Title}"
-                                    FontSize="16"
-                                    FontAttributes="Bold"
-                                    TextColor="#202124"
-                                    LineBreakMode="TailTruncation" />
-                            </Grid>
-                        </Frame>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </FlexLayout>
-        </VerticalStackLayout>
-    </ScrollView>
+                <!-- Пустое состояние -->
+                <VerticalStackLayout x:Name="EmptyFolders"
+                                     Spacing="10"
+                                     Padding="0,36,0,0">
+                    <Border WidthRequest="72"
+                            HeightRequest="72"
+                            BackgroundColor="{AppThemeBinding Light=#E9E2FF, Dark=#2D2636}"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 36"
+                            HorizontalOptions="Center">
+                        <Image Source="folder_image.png"
+                               WidthRequest="32"
+                               HeightRequest="32"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="#6B5CF6" />
+                            </Image.Behaviors>
+                        </Image>
+                    </Border>
+                    <Label Text="Папок пока нет"
+                           FontSize="17"
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=#2A2440, Dark=White}"
+                           HorizontalTextAlignment="Center" />
+                    <Label Text="Нажмите «+», чтобы создать первую папку"
+                           FontSize="13"
+                           TextColor="{AppThemeBinding Light=#9A93AD, Dark=#8E879C}"
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>
