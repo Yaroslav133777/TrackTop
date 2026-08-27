@@ -117,6 +117,20 @@
                                            FontSize="12"
                                            TextColor="{AppThemeBinding Light=#8B8B95, Dark=#BEBEC6}" />
                                 </VerticalStackLayout>
+
+                                <ImageButton Grid.Column="2"
+                                        Source="delete.png"
+                                        BackgroundColor="#E5484D"
+                                        HeightRequest="30"
+                                        WidthRequest="30"
+                                        CornerRadius="15"
+                                        Padding="7"
+                                        VerticalOptions="Start"
+                                        Clicked="OnDeleteTaskTapped">
+                                    <ImageButton.Behaviors>
+                                        <toolkit:IconTintColorBehavior TintColor="White" />
+                                    </ImageButton.Behaviors>
+                                </ImageButton>
                             </Grid>
                         </Border>
                     </DataTemplate>

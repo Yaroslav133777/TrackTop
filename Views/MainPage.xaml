@@ -81,11 +81,8 @@
                         HeightRequest="38"
                         WidthRequest="150"
                         CornerRadius="19"
-                        x:Name="TodayButton">
-                    <Button.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="SelectButton" />
-                    </Button.GestureRecognizers>
-                </Button>
+                        x:Name="TodayButton"
+                        Clicked="SelectButton"/>
 
                 <Button Text="Запланированные"
                         FontSize="14"
@@ -98,11 +95,8 @@
                         HeightRequest="38"
                         WidthRequest="190"
                         CornerRadius="19"
-                        x:Name="ScheduleButton">
-                    <Button.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="SelectButton" />
-                    </Button.GestureRecognizers>
-                </Button>
+                        x:Name="ScheduleButton"
+                        Clicked="SelectButton"/>
 
                 <Button Text="Заметки"
                         FontSize="14"
@@ -115,11 +109,36 @@
                         HeightRequest="38"
                         WidthRequest="110"
                         CornerRadius="19"
-                        x:Name="NotesButton">
-                    <Button.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="SelectButton" />
-                    </Button.GestureRecognizers>
-                </Button>
+                        x:Name="NotesButton"
+                        Clicked="SelectButton"/>
+
+                <Button Text="Все задачи"
+                        FontSize="14"
+                        ImageSource="schedule_image.png"
+                        ContentLayout="Left, 6"
+                        TextColor="{AppThemeBinding Light=#4B4B55, Dark=White}"
+                        BackgroundColor="{AppThemeBinding Light=White, Dark=#2B2B31}"
+                        BorderColor="{AppThemeBinding Light=#E4E4E8, Dark=#3B3B42}"
+                        BorderWidth="1"
+                        HeightRequest="38"
+                        WidthRequest="150"
+                        CornerRadius="19"
+                        x:Name="AllButton"
+                        Clicked="SelectButton"/>
+
+                <Button Text="Завершённые"
+                        FontSize="14"
+                        ImageSource="schedule_image.png"
+                        ContentLayout="Left, 6"
+                        TextColor="{AppThemeBinding Light=#4B4B55, Dark=White}"
+                        BackgroundColor="{AppThemeBinding Light=White, Dark=#2B2B31}"
+                        BorderColor="{AppThemeBinding Light=#E4E4E8, Dark=#3B3B42}"
+                        BorderWidth="1"
+                        HeightRequest="38"
+                        WidthRequest="170"
+                        CornerRadius="19"
+                        x:Name="CompletedButton"
+                        Clicked="SelectButton"/>
             </HorizontalStackLayout>
         </ScrollView>
 
@@ -192,12 +211,19 @@
                                     </HorizontalStackLayout>
                                 </VerticalStackLayout>
 
-                                <Image Grid.Column="2"
-                                       Source="more_image.png"
-                                       WidthRequest="18"
-                                       HeightRequest="18"
+                                <ImageButton Grid.Column="2"
+                                       Source="delete.png"
+                                       BackgroundColor="#E5484D"
+                                       HeightRequest="30"
+                                       WidthRequest="30"
+                                       CornerRadius="15"
+                                       Padding="7"
                                        VerticalOptions="Start"
-                                       IsVisible="False" />
+                                       Clicked="OnDeleteTaskTapped">
+                                    <ImageButton.Behaviors>
+                                        <toolkit:IconTintColorBehavior TintColor="White" />
+                                    </ImageButton.Behaviors>
+                                </ImageButton>
                             </Grid>
                         </Border>
                     </DataTemplate>

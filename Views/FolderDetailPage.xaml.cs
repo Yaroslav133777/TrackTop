@@ -2,10 +2,12 @@ namespace TrackTop.Views;
 
 public partial class FolderDetailPage : ContentPage
 {
+    private readonly AppStateService _appState;
     private readonly FolderModel _folder;
 
-    public FolderDetailPage(FolderModel folder)
+    public FolderDetailPage(AppStateService appState, FolderModel folder)
     {
+        _appState = appState;
         _folder = folder;
         InitializeComponent();
         BindingContext = folder;
@@ -33,5 +35,14 @@ public partial class FolderDetailPage : ContentPage
     private async void OnBackTapped(object? sender, TappedEventArgs e)
     {
         await Navigation.PopAsync();
+    }
+
+    private void OnDeleteTaskTapped(object? sender, EventArgs e)
+    {
+        if (sender is Element { BindingContext: TaskModel task })
+        {
+            _appState.RemoveTask(task);
+            UpdateTasksCount();
+        }
     }
 }

@@ -31,8 +31,14 @@ public partial class FoldersPage : ContentPage
     {
         if (e.Parameter is FolderModel folder)
         {
-            await Navigation.PushAsync(new FolderDetailPage(folder));
+            await Navigation.PushAsync(new FolderDetailPage(_appState, folder));
         }
+    }
+
+    private void OnDeleteFolderTapped(object? sender, EventArgs e)
+    {
+        if (sender is Element { BindingContext: FolderModel folder })
+            _appState.RemoveFolder(folder);
     }
 
     private async void OnOpenPopupClicked(object sender, EventArgs e)

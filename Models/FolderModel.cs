@@ -17,7 +17,6 @@ public class FolderModel : INotifyPropertyChanged
     }
 
     public List<TaskModel> Tasks { get; set; } = new List<TaskModel>();
-
     public Color FolderColor
     {
         get => _folderColor;

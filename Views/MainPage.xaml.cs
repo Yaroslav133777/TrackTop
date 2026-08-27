@@ -33,8 +33,10 @@ public partial class MainPage : ContentPage
         _appState.TodayTasks.CollectionChanged += (s, e) => ApplyFilter();
         _appState.PlannedTasks.CollectionChanged += (s, e) => ApplyFilter();
         _appState.NotesTasks.CollectionChanged += (s, e) => ApplyFilter();
+        _appState.CompletedTasks.CollectionChanged += (s, e) => ApplyFilter();
         _appState.Folders.CollectionChanged += (s, e) => ApplyFilter();
         ApplyFilter();
+        SelectButton(TodayButton, EventArgs.Empty);
     }
 
     public Color ThemeIconColor =>
@@ -49,33 +51,51 @@ public partial class MainPage : ContentPage
 
     private void ApplyFilter()
     {
-        var all = _appState.AllTasks;
+        var today = DateOnly.FromDateTime(DateTime.Today);
+        var active = _appState.AllTasks.Where(t => !_appState.CompletedTasks.Contains(t)).ToList();
         List<TaskModel> filtered;
 
         if (_selectedButton == TodayButton)
         {
-            var today = DateOnly.FromDateTime(DateTime.Today);
-            filtered = all.Where(t => t.Date == today).ToList();
+            filtered = active.Where(t => t.Date == today).ToList();
             EmptyTitleLabel.Text = "Нет задач на сегодня";
             EmptySubtitleLabel.Text = "На сегодня задач нет. Отличный день!";
         }
+        else if (_selectedButton == ScheduleButton)
+        {
+            filtered = active.Where(t => t.Date > today).ToList();
+            EmptyTitleLabel.Text = "Нет запланированных задач";
+            EmptySubtitleLabel.Text = "Запланированных задач пока нет";
+        }
         else if (_selectedButton == NotesButton)
         {
-            filtered = all.Where(t => t.Folder == null).ToList();
+            filtered = active.Where(t => t.Folder == null).ToList();
             EmptyTitleLabel.Text = "Нет заметок";
             EmptySubtitleLabel.Text = "Заметок пока нет. Создайте задачу без папки";
         }
+        else if (_selectedButton == AllButton)
+        {
+            filtered = active;
+            EmptyTitleLabel.Text = "Нет задач";
+            EmptySubtitleLabel.Text = "Задач пока нет. Создайте первую задачу";
+        }
         else
         {
-            filtered = all.ToList();
-            EmptyTitleLabel.Text = "Нет задач";
-            EmptySubtitleLabel.Text = "Запланированных задач пока нет";
+            filtered = _appState.CompletedTasks.ToList();
+            EmptyTitleLabel.Text = "Нет завершённых задач";
+            EmptySubtitleLabel.Text = "Задачи с истёкшим сроком появятся здесь";
         }
 
         TasksCollection.ItemsSource = filtered;
         bool hasTasks = filtered.Count > 0;
         EmptyStateLayout.IsVisible = !hasTasks;
         TasksCollection.IsVisible = hasTasks;
+    }
+
+    private void OnDeleteTaskTapped(object? sender, EventArgs e)
+    {
+        if (sender is Element { BindingContext: TaskModel task })
+            _appState.RemoveTask(task);
     }
 
     private async void Listen(object? sender, EventArgs args)

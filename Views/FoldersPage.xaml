@@ -145,6 +145,24 @@
                                         HorizontalOptions="End"
                                         VerticalOptions="Start" />
 
+                                    <!-- Удалить папку -->
+                                    <ImageButton
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Source="delete.png"
+                                        BackgroundColor="#E5484D"
+                                        HeightRequest="26"
+                                        WidthRequest="26"
+                                        CornerRadius="13"
+                                        Padding="6"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Center"
+                                        Clicked="OnDeleteFolderTapped">
+                                        <ImageButton.Behaviors>
+                                            <toolkit:IconTintColorBehavior TintColor="White" />
+                                        </ImageButton.Behaviors>
+                                    </ImageButton>
+
                                     <!-- Название -->
                                     <Label
                                         Grid.Row="2"
