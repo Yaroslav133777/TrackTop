@@ -1,9 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Maui.Platform;
+﻿using Microsoft.Maui.Platform;
 
 namespace TrackTop;
 
-public partial class App : Application
+public partial class App
 {
     public App()
     {

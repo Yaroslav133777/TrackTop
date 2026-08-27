@@ -1,6 +1,4 @@
-﻿using System;
-using MauiControls = Microsoft.Maui.Controls;
-using Microsoft.Extensions.DependencyInjection;
+﻿using MauiControls = Microsoft.Maui.Controls;
 
 namespace TrackTop;
 

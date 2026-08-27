@@ -1,7 +1,5 @@
 ﻿﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
-using CommunityToolkit.Maui.Media;
-using Microsoft.Extensions.DependencyInjection;
 namespace TrackTop;
 
 public static class MauiProgram

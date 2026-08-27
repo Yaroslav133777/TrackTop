@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TrackTop.Views;
+﻿using TrackTop.Views;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Extensions;
 namespace TrackTop;

@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Media;
 using TrackTop.Views;
 using CommunityToolkit.Maui.Extensions;
-using Microsoft.Maui.Controls;
 
 namespace TrackTop;
 public partial class MainPage : ContentPage
