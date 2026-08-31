@@ -41,6 +41,7 @@
         <!-- iOS signing (physical device) -->
         <DevelopmentTeam>6RK6QAFY58</DevelopmentTeam>
         <CodesignKey>Apple Development: yaroslav.kutsyk@mail.ru (WA5YV8LAGU)</CodesignKey>
+        <CodesignProvision Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">8f27402e-4075-4603-acdf-25986c8b11cc</CodesignProvision>
 
         <!-- To develop, package, and publish an app to the Microsoft Store, see: https://aka.ms/MauiTemplateUnpackaged -->
         <WindowsPackageType>None</WindowsPackageType>

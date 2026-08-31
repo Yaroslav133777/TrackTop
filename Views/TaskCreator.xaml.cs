@@ -1,10 +1,9 @@
-﻿﻿
+﻿﻿ 
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
-using CommunityToolkit.Maui.Views;
 
 namespace TrackTop.Views;
-public partial class TaskCreator : Popup
+public partial class TaskCreator
 {
     private readonly AppStateService _appState;
 

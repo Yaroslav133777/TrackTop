@@ -4,21 +4,20 @@ namespace TrackTop;
 
 public partial class App
 {
-    public App()
+    private readonly AppStateService _appState;
+    private readonly IServiceProvider _services;
+
+    public App(AppStateService appState, IServiceProvider services)
     {
+        _appState = appState;
+        _services = services;
         InitializeComponent();
-        UserAppTheme = AppTheme.Unspecified;
+        UserAppTheme = appState.DarkTheme ? AppTheme.Dark : AppTheme.Light;
     }
     protected override Window CreateWindow(IActivationState? activationState)
     {
-        var services = Handler?.MauiContext?.Services ?? Microsoft.Maui.Controls.Application.Current?.Handler?.MauiContext?.Services;
-        
-        var appState = services?.GetService<AppStateService>() ?? new AppStateService();
-
-        UserAppTheme = appState.DarkTheme ? AppTheme.Dark : AppTheme.Light;
-
-        var navPage = services?.GetService<NavTabbedPage>()
-            ?? new NavTabbedPage(appState, services ?? new ServiceCollection().BuildServiceProvider());
+        var navPage = _services.GetRequiredService<NavTabbedPage>();
+        var appState = _appState;
 
         var window = new Window(navPage);
         ApplyWindowBackground(window);
@@ -30,7 +29,7 @@ public partial class App
         window.Stopped += (_, _) => appState.SaveData();
         window.Destroying += (_, _) => appState.SaveData();
 
-#if WINDOWS
+#if WINDOWS || MACCATALYST
         window.MinimumWidth = 850;  
         window.MinimumHeight = 620;    
         
