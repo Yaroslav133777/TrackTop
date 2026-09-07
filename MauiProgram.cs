@@ -31,5 +31,6 @@ public static class MauiProgram
 #endif
 
         return builder.Build();
+        int a = 10;
     }
 }
