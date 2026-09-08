@@ -1,4 +1,4 @@
-﻿﻿ 
+﻿ 
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 
@@ -95,8 +95,10 @@ public partial class TaskCreator
         {
             folder.AddTask(task);
         }
-        
-        _appState.TodayTasks.Add(task);
+        else
+        {
+            _appState.TodayTasks.Add(task);
+        }
         
         _appState.SaveData();
         

@@ -213,21 +213,21 @@ public class AppStateService : INotifyPropertyChanged
             foreach (var dto in data.TodayTasks)
             {
                 var task = ToModel(dto, folderByName);
-                if (task != null)
+                if (task != null && task.Folder == null)
                     TodayTasks.Add(task);
             }
 
             foreach (var dto in data.PlannedTasks)
             {
                 var task = ToModel(dto, folderByName);
-                if (task != null)
+                if (task != null && task.Folder == null)
                     PlannedTasks.Add(task);
             }
 
             foreach (var dto in data.NotesTasks)
             {
                 var task = ToModel(dto, folderByName);
-                if (task != null)
+                if (task != null && task.Folder == null)
                     NotesTasks.Add(task);
             }
 

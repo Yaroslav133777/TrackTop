@@ -38,10 +38,9 @@
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
         <ApplicationVersion>1</ApplicationVersion>
 
-        <!-- iOS signing (physical device) -->
+        <!-- iOS signing -->
         <DevelopmentTeam>6RK6QAFY58</DevelopmentTeam>
-        <CodesignKey>Apple Development: yaroslav.kutsyk@mail.ru (WA5YV8LAGU)</CodesignKey>
-        <CodesignProvision Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">8f27402e-4075-4603-acdf-25986c8b11cc</CodesignProvision>
+        <CodesignProvision>Automatic</CodesignProvision>
 
         <!-- To develop, package, and publish an app to the Microsoft Store, see: https://aka.ms/MauiTemplateUnpackaged -->
         <WindowsPackageType>None</WindowsPackageType>
@@ -74,6 +73,18 @@
 
     <PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">
         <CodesignEntitlements>Platforms/MacCatalyst/Entitlements.plist</CodesignEntitlements>
+          <RuntimeIdentifier Condition="'$(Configuration)' == 'Debug'">maccatalyst-x64</RuntimeIdentifier>
+        <RuntimeIdentifiers Condition="'$(Configuration)' == 'Release'">maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers>
+        <ArchiveOnBuild>false</ArchiveOnBuild>
+        <EnableAppSandbox>true</EnableAppSandbox>
+    </PropertyGroup>
+
+    <!-- Local development on this Mac: ad-hoc code signing so we can run without
+         a macOS provisioning profile. Does not affect iOS or Release/App Store. -->
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug' And $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">
+        <EnableCodeSigning>true</EnableCodeSigning>
+        <CodesignKey>-</CodesignKey>
+        <CodesignProvision></CodesignProvision>
     </PropertyGroup>
 
     <ItemGroup>
